@@ -1,11 +1,13 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import './index.css';
 import Footer from '../Footer';
+import About from '../About';
+import './index.css';
 
 function App() {
   return (
     <Route>
+      <About />
       <Footer />
     </Route>
   );
