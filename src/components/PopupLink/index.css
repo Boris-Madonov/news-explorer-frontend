@@ -1,11 +1,20 @@
 .popup-link {
   display: flex;
   flex-direction: row;
-  margin: 16px auto 28px;
-  font-size: 14px;
   line-height: 1.2;
   font-weight: 400;
   font-family: 'Inter';
+}
+
+.popup-link_place_login-register {
+  font-size: 14px;
+  margin: 16px auto 28px;
+}
+
+.popup-link_place_info-tooltip {
+  font-size: 18px;
+  margin: 14px 0 51px 32px;
+
 }
 
 .popup-link__text {

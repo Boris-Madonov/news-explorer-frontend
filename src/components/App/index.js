@@ -7,6 +7,7 @@ import './index.css';
 import RegisterPopup from '../RegisterPopup';
 import { PlaceContext } from '../../contexts/PlaceContext';
 import LoginPopup from '../LoginPopup';
+import InfoTooltip from '../InfoTooltip';
 
 function App() {
   return (
@@ -14,12 +15,20 @@ function App() {
       <SearchForm />
 
       <PlaceContext.Provider value="register">
-        <RegisterPopup />
+        <RegisterPopup
+          isOpen={false}
+        />
       </PlaceContext.Provider>
 
       <PlaceContext.Provider value="login">
         <LoginPopup
-          isOpen={true}
+          isOpen={false}
+        />
+      </PlaceContext.Provider>
+
+      <PlaceContext.Provider value="infoTooltip">
+        <InfoTooltip
+          isOpen={false}
         />
       </PlaceContext.Provider>
 
