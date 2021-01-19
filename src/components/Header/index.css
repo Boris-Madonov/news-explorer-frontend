@@ -1,0 +1,21 @@
+.header {
+  max-width: 1440px;
+  min-height: 80px;
+  margin: 0 auto;
+  padding: 0 104px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(84, 84, 84, .7);
+}
+
+.header__logo {
+  font-family: 'Roboto Slab';
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+  margin: 0;
+}

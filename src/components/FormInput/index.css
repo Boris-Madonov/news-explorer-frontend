@@ -1,0 +1,42 @@
+.input__name {
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  color: #2F71E5;
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 400;
+  font-family: 'Inter';
+  margin-bottom: 13px;
+}
+
+.input__field {
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+}
+
+.input__field_place_login-register {
+  width: 358px;
+  height: 30px;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  color: #000000;
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 400;
+  font-family: 'Inter';
+  margin-top: 10px;
+  margin-bottom: 3px;
+}
+
+.input__field_place_search {
+
+}
+
+.input__field-error {
+  color: #FF0000;
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 400;
+  font-family: 'Inter';
+}

@@ -1,0 +1,25 @@
+.popup-link {
+  display: flex;
+  flex-direction: row;
+  margin: 16px auto 28px;
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 400;
+  font-family: 'Inter';
+}
+
+.popup-link__text {
+  margin: 0;
+  color: #000000;
+}
+
+.popup-link__name {
+  margin: 0;
+  color: #2F71E5;
+  cursor: pointer;
+  transition: opacity .5s linear;
+}
+
+.popup-link__name:hover {
+  opacity: .6;
+}

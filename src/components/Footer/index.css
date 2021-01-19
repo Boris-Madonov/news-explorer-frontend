@@ -60,6 +60,7 @@
 
 .footer__nav-link {
   text-decoration: none;
+  cursor: pointer;
   transition: opacity .5s linear;
 }
 

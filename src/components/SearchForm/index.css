@@ -1,0 +1,7 @@
+.search-form {
+  max-width: 1440px;
+  height: 576px;
+  margin: 0 auto;
+  background-image: url(../../images/searchformbg.png);
+  background-position: center;
+}
