@@ -1,20 +1,20 @@
 import React from 'react';
-import Popup from '../Popup';
-import FormInput from '../FormInput';
-import './index.css';
 import Form from '../Form';
+import FormInput from '../FormInput';
+import Popup from '../Popup';
 import PopupLink from '../PopupLink';
+import './index.css';
 
-function RegisterPopup({
+function LoginPopup({
   isOpen,
 }) {
   return (
     <Popup
-      name="register"
-      isOpen={isOpen}
+    name="login"
+    isOpen={isOpen}
     >
       <Form
-        formTitle="Регистрация"
+        formTitle="Вход"
       >
         <FormInput
           inputName="Email"
@@ -36,23 +36,13 @@ function RegisterPopup({
           minLength="1"
           maxLength=""
         />
-        <FormInput
-          inputName="Имя"
-          type="text"
-          name="name"
-          placeholder="Введите своё имя"
-          value=""
-          onChange=""
-          minLength="2"
-          maxLength="30"
-        />
       </Form>
       <PopupLink
         textLink="или"
-        nameLink="Войти"
+        nameLink="Зарегистрироваться"
       />
     </Popup>
   );
 }
 
-export default RegisterPopup;
+export default LoginPopup;
