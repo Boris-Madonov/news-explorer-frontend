@@ -14,13 +14,31 @@ function FormInput({
   }) {
   const place = useContext(PlaceContext);
 
-  const inputFieldType = place === "login" || "register"
-    ? "input__field_place_login-register"
-    : "input__field_place_search";
+  let inputFieldType;
+  let inputNameType;
+  let inputNameText;
+  let errorType;
+
+  if (place === "login") {
+    inputFieldType = "input__field_place_login-register";
+    inputNameType = "input__name_place_login-register";
+    inputNameText = inputName;
+    errorType = "";
+  } else if (place === "register") {
+    inputFieldType ="input__field_place_login-register";
+    inputNameType = "input__name_place_login-register";
+    inputNameText = inputName;
+    errorType = "";
+  } else if (place === "search") {
+    inputFieldType = "input__field_place_search";
+    inputNameType = "input__name_place_search";
+    inputNameText = "";
+    errorType = "input__field-error_hide";
+  }
 
   return(
-    <label className="input__name">
-      {inputName}
+    <label className={`input__name ${inputNameType}`}>
+      {inputNameText}
       <input
         className={`input__field ${inputFieldType}`}
         id={`${place}-input-${name}`}
@@ -34,10 +52,10 @@ function FormInput({
         required
       />
       <span
-        className="input__field-error"
+        className={`input__field-error ${errorType}`}
         id={`${place}-input-${name}-error`}
       >
-        Не правильный формат Email
+        Ошибка валидации
       </span>
     </label>
   );

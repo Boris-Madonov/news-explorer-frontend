@@ -5,11 +5,11 @@
 }
 
 .form__name {
-  margin: 34px 0 22px;
   font-family: 'Roboto';
 }
 
 .form__name_place_login-register {
+  margin: 34px 0 22px;
   width: 358px;
   color: #1A1B22;
   font-size: 24px;
@@ -18,6 +18,8 @@
 }
 
 .form__name_place_search {
+  margin: 32px 0 64px;
+  padding-right: 63px;
   width: 545px;
   color: #FFFFFF;
   font-size: 18px;
@@ -36,5 +38,7 @@
 }
 
 .form__fieldset_place_search {
-
+  display: flex;
+  flex-direction: row;
+  position: relative;
 }

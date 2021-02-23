@@ -51,6 +51,7 @@
 .footer__nav-element-icon {
   width: 20px;
   height: 20px;
+  display: block;
   margin-right: 30px;
 }
 

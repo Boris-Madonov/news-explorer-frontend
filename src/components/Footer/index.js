@@ -6,7 +6,7 @@ import './index.css';
 function Footer() {
   return (
     <footer className="footer">
-      <p className="footer__text">&copy; 2020 Supersite, Powered by News API</p>
+      <p className="footer__text">&copy; 2021 Supersite, Powered by News API</p>
       <nav className="footer__nav">
         <ul className="footer__nav-list footer__nav_list_text">
           <li className="footer__nav-element-text">

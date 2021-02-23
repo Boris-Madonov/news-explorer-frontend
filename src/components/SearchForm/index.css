@@ -1,7 +1,14 @@
 .search-form {
   max-width: 1440px;
-  height: 576px;
   margin: 0 auto;
-  background-image: url(../../images/searchformbg.png);
-  background-position: center;
+}
+
+.search-form__title {
+  margin: 80px auto 0;
+  width: 608px;
+  color: #FFFFFF;
+  font-family: 'Roboto Slab';
+  font-size: 60px;
+  line-height: 64px;
+  font-weight: 400;
 }

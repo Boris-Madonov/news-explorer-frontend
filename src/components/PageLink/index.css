@@ -1,0 +1,62 @@
+.page-link {
+  box-sizing: border-box;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity .5s linear;
+}
+
+.page-link:hover {
+  opacity: .6;
+}
+
+.page-link__place_popup {
+  color: #2F71E5;
+  font-family: 'Inter';
+  font-weight: normal;
+}
+
+.page-link__login-register {
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.page-link__info-tooltip {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.page-link__place_logo {
+  font-family: 'Roboto Slab';
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.page-link__place_menu {
+  font-family: 'Roboto';
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.page-link__footer {
+  font-weight: 400;
+  color: #1A1B22;
+}
+
+.page-link__header { /* это класс для серого цвета ссылки */
+  font-weight: 500;
+  color: #B6BCBF;
+}
+
+.page-link__header_active { /* тут перекрываем серый цвет для активной страницы */
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+  border-bottom: 3px solid;
+  padding-bottom: 27px;
+}
+
+.page-link__page_saved-news { /* тут перекрываем цвет для страницы со savedNews */
+  color: #1A1B22;
+  border-color: #1A1B22;
+}

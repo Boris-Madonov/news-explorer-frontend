@@ -1,0 +1,21 @@
+.search-results {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 0;
+  background-color: #F5F6F7;
+}
+
+.search-results__title {
+  font-size: 40px;
+  line-height: 46px;
+  font-weight: 400;
+  font-family: 'Roboto Slab';
+  color: #1A1B22;
+  margin: 0 104px;
+  padding: 0;
+}
+
+.search-results__button {
+  width: 288px;
+  margin: 0 auto;
+}

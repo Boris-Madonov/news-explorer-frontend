@@ -1,3 +1,18 @@
+.header-elements {
+
+}
+
+.header-elements_page_main {
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 576px;
+  background-image: url(../../images/searchformbg.png);
+}
+
+.header-elements_page_saved-news {
+  background-color: #FFFFFF;
+}
+
 .header {
   max-width: 1440px;
   min-height: 80px;
@@ -11,11 +26,16 @@
   border-bottom: 1px solid rgba(84, 84, 84, .7);
 }
 
-.header__logo {
-  font-family: 'Roboto Slab';
-  color: #ffffff;
-  font-size: 20px;
-  line-height: 1.2;
-  font-weight: 700;
-  margin: 0;
+.header__menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header__menu-list {
+  margin-left: 32px;
+}
+
+.header__hide-link {
+  display: none;
 }

@@ -7,13 +7,13 @@
   box-sizing: border-box;
   padding: 0;
   border: none;
+  cursor: pointer;
 }
 
 .button__submit {
   color: #FFFFFF;
   background-color: #2F71E5;
   box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
-  cursor: pointer;
   transition: background-color .5s linear;
 }
 
@@ -32,15 +32,29 @@
 }
 
 .button__submit_place_search {
+  position: absolute;
+  top: 0;
+  right: 0;
   width: 168px;
   height: 64px;
 }
 
 .button__header {
-  width: 176px;
   height: 48px;
+  padding: 0 16px;
   color: #FFFFFF;
   border: 1px solid #FFFFFF;
+  background-color: unset;
+  transition: opacity .5s linear;
+}
+
+.button__header:hover {
+  opacity: .6;
+}
+
+.button__header_saved-news {
+  color: #1A1B22;
+  border: 1px solid #1A1B22;
 }
 
 .button__cards-list {
@@ -48,4 +62,9 @@
   height: 64px;
   color: #1A1B22;
   background-color: #FFFFFF;
+  transition: opacity .5s linear;
+}
+
+.button__cards-list:hover {
+  opacity: .6;
 }

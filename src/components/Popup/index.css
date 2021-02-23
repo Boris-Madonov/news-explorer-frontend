@@ -9,7 +9,7 @@
   visibility: hidden;
   opacity: 0;
   z-index: 2;
-  transition: visibility 1s, opacity 0.5s ease;
+  transition: visibility 1s, opacity 0.5s linear;
 }
 
 .popup_opened {

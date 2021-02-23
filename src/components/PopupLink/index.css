@@ -1,34 +1,21 @@
 .popup-link {
   display: flex;
   flex-direction: row;
-  line-height: 1.2;
-  font-weight: 400;
   font-family: 'Inter';
 }
 
 .popup-link_place_login-register {
-  font-size: 14px;
   margin: 16px auto 28px;
 }
 
 .popup-link_place_info-tooltip {
-  font-size: 18px;
   margin: 14px 0 51px 32px;
 
 }
 
 .popup-link__text {
+  font-size: 14px;
+  line-height: 17px;
   margin: 0;
   color: #000000;
-}
-
-.popup-link__name {
-  margin: 0;
-  color: #2F71E5;
-  cursor: pointer;
-  transition: opacity .5s linear;
-}
-
-.popup-link__name:hover {
-  opacity: .6;
 }

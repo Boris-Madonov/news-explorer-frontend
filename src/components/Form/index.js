@@ -5,16 +5,27 @@ import './index.css';
 
 function Form({
   formTitle,
+  buttonText,
   children,
 }) {
   const place = useContext(PlaceContext);
 
   let formNameType;
   let formFieldsetType;
+  let method;
 
-  if (place === "login" || "register") {
+  if (place === "login") {
     formNameType = "form__name_place_login-register";
     formFieldsetType = "form__fieldset_place_login-register";
+    method = "POST";
+  } else if (place === "register") {
+    formNameType = "form__name_place_login-register";
+    formFieldsetType = "form__fieldset_place_login-register";
+    method = "POST";
+  } else if (place === "search") {
+    formNameType = "form__name_place_search";
+    formFieldsetType = "form__fieldset_place_search";
+    method = "GET";
   }
 
   return(
@@ -22,11 +33,7 @@ function Form({
       className="form"
       name={`${place}-form`}
       action="#"
-      method={
-        place === "register" || "login"
-          ? "POST"
-          : "GET"
-      }
+      method={method}
       onSubmit=""
       noValidate
     >
@@ -35,7 +42,9 @@ function Form({
       </p>
       <fieldset className={`form__fieldset ${formFieldsetType}`}>
         {children}
-        <Button />
+        <Button
+          buttonText={buttonText}
+        />
       </fieldset>
     </form>
   );

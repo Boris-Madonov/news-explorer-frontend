@@ -1,0 +1,155 @@
+.card {
+  width: 400px;
+  height: 576px;
+  border-radius: 16px;
+  position: relative;
+  padding: 24px;
+  overflow: hidden;
+  list-style: none;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+}
+
+.card__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 272px;
+}
+
+.card__date {
+  color: #B6BCBF;
+  font-family: 'Source Sans Pro';
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  text-align: left;
+  margin: 268px 0 0;
+}
+
+.card__info {
+  height: 194px;
+  margin: 12px 0 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.card__title {
+  color: #1A1B22;
+  font-family: 'Roboto Slab';
+  font-size: 26px;
+  line-height: 30px;
+  font-weight: 400;
+  text-align: left;
+  margin: 0;
+}
+
+.card__text {
+  color: #1A1B22;
+  font-family: 'Roboto';
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  text-align: left;
+  margin: 16px 0 0;
+
+}
+
+.card__source {
+  color: #B6BCBF;
+  font-family: 'Roboto Slab';
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  text-align: left;
+  margin: 10px 0 0;
+}
+
+.card__keyword {
+  color: #000000;
+  font-family: 'Roboto';
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  height: 40px;
+  max-width: 143px;
+  box-sizing: border-box;
+  z-index: 2;
+  margin: 0;
+  padding: 8px 12px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card__keyword_hidden {
+  visibility: hidden;
+}
+
+.card__button {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  background-color: #FFFFFF;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #B6BCBF;
+  transition: color .5s linear;
+}
+
+.card__button:hover {
+  color: #1A1B22;
+}
+
+.card__infoTooltip {
+  color: #000000;
+  font-family: 'Roboto';
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 500;
+  position: absolute;
+  top: 24px;
+  right: 69px;
+  z-index: 2;
+  margin: 0;
+  padding: 13px 8px;
+  background-color: #FFFFFF;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .5s, opacity 0.5s linear;
+}
+
+.card__button:hover ~ .card__infoTooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.card__icon {
+  vertical-align: top;
+}
+
+.card__hide-button {
+  display: none;
+  visibility: hidden;
+}
