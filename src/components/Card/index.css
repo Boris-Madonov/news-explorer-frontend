@@ -55,7 +55,6 @@
   font-weight: 400;
   text-align: left;
   margin: 16px 0 0;
-
 }
 
 .card__source {
@@ -152,4 +151,48 @@
 .card__hide-button {
   display: none;
   visibility: hidden;
+}
+
+@media screen and (max-width: 1024px) {
+  .card {
+    width: 224px;
+    height: 420px;
+    padding: 16px;
+  }
+
+  .card__image {
+    height: 150px;
+  }
+
+  .card__date {
+    margin: 150px 0 0;
+  }
+
+  .card__info {
+    height: 170px;
+  }
+
+  .card__title {
+    font-size: 22px;
+    line-height: 24px;
+  }
+
+  .card__text {
+    margin: 10px 0 0
+  }
+
+  .card__keyword {
+    top: 8px;
+    left: 8px;
+  }
+
+  .card__button {
+    top: 8px;
+    right: 8px;
+  }
+
+  .card__infoTooltip {
+    top: 56px;
+    right: 8px;
+  }
 }

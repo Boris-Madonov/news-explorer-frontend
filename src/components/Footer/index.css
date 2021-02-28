@@ -108,12 +108,16 @@
   }
 
   .footer__nav {
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   .footer__nav_list_text {
     margin-right: 58px;
     margin-bottom: 15px;
+  }
+
+  .footer__nav_list_icon {
+    padding-top: 12px;
   }
 
   .footer__nav-link-text {

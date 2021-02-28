@@ -62,3 +62,10 @@
   display: none;
   visibility: hidden;
 }
+
+@media screen and (max-width: 970px) {
+  .input__field_place_search {
+    width: 448px;
+    height: 56px;
+  }
+}

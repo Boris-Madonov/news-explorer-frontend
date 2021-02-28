@@ -1,6 +1,6 @@
 .button {
   font-size: 18px;
-  line-height: 1.4;
+  line-height: 24px;
   font-weight: 500;
   font-family: 'Roboto';
   border-radius: 100px;
@@ -67,4 +67,25 @@
 
 .button__cards-list:hover {
   opacity: .6;
+}
+
+@media screen and (max-width: 970px) {
+  .button {
+    font-size: 16px;
+  }
+
+  .button__header {
+    height: 40px;
+    padding: 0 12px;
+  }
+
+  .button__submit_place_search {
+    width: 160px;
+    height: 56px;
+  }
+
+  .button__cards-list {
+    width: 240px;
+    height: 56px;
+  }
 }

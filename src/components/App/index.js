@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import './index.css';
 import RegisterPopup from '../RegisterPopup';
 import { PlaceContext } from '../../contexts/PlaceContext';
 import { PageContext } from '../../contexts/PageContext';

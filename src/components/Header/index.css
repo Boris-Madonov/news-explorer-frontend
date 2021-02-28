@@ -3,7 +3,7 @@
 }
 
 .header-elements_page_main {
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
   height: 576px;
   background-image: url(../../images/searchformbg.png);
@@ -15,7 +15,7 @@
 
 .header {
   max-width: 1440px;
-  min-height: 80px;
+  height: 80px;
   margin: 0 auto;
   padding: 0 104px;
   box-sizing: border-box;
@@ -38,4 +38,29 @@
 
 .header__hide-link {
   display: none;
+}
+
+.header__logOutIcon {
+  vertical-align: top;
+}
+
+@media screen and (max-width: 970px) {
+  .header {
+    height: 66px;
+    padding: 0 40px;
+  }
+
+  .header-elements_page_main {
+    height: 400px;
+  }
+
+  .header__menu-list {
+    margin-left: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header-elements_page_main {
+    background-image: url(../../images/searchformbg_tablet.png);
+  }
 }

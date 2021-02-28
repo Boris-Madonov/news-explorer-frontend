@@ -60,3 +60,13 @@
   color: #1A1B22;
   border-color: #1A1B22;
 }
+
+@media screen and (max-width: 970px) {
+  .page-link__place_menu {
+    font-size: 16px;
+  }
+
+  .page-link__header_active {
+    padding-bottom: 21px;
+  }
+}

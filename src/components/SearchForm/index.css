@@ -11,4 +11,15 @@
   font-size: 60px;
   line-height: 64px;
   font-weight: 400;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 970px) {
+  .search-form__title {
+    margin: 38px auto 0;
+    padding-right: 63px;
+    width: 448px;
+    font-size: 36px;
+    line-height: 40px;
+  }
 }

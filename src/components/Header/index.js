@@ -6,6 +6,7 @@ import { PageContext } from '../../contexts/PageContext';
 import { PlaceContext } from '../../contexts/PlaceContext';
 import SavedNewsHeader from '../SavedNewsHeader';
 import './index.css';
+import { LogOut } from '../../images/icon';
 
 function Header({
   loggedIn,
@@ -27,7 +28,14 @@ function Header({
     headerType = "header-elements_page_saved-news";
   }
 
-  const buttonText = loggedIn ? "Грета" : "Авторизоваться";
+  const buttonText = !loggedIn
+    ? <>
+        Александра
+        <LogOut
+          className="header__logOutIcon"
+        />
+      </>
+    : "Авторизоваться";
   const hideLink = !loggedIn ? "" : "header__hide-link";
 
   return (
