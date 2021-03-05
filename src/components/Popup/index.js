@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { CloseIcon } from '../../images/icon';
 import './index.css';
 
 function Popup({
@@ -43,6 +44,9 @@ function Popup({
           type="button"
           onClick={onClose}
         >
+          <CloseIcon
+            className="popup__close-button-icon"
+          />
         </button>
         {children}
       </div>

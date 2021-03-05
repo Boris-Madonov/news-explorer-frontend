@@ -12,19 +12,23 @@ function Form({
 
   let formNameType;
   let formFieldsetType;
+  let formButtonType;
   let method;
 
   if (place === "login") {
     formNameType = "form__name_place_login-register";
     formFieldsetType = "form__fieldset_place_login-register";
+    formButtonType = "form__button_place_login-register";
     method = "POST";
   } else if (place === "register") {
     formNameType = "form__name_place_login-register";
     formFieldsetType = "form__fieldset_place_login-register";
+    formButtonType = "form__button_place_login-register";
     method = "POST";
   } else if (place === "search") {
     formNameType = "form__name_place_search";
     formFieldsetType = "form__fieldset_place_search";
+    formButtonType = "form__button_place_search";
     method = "GET";
   }
 
@@ -42,9 +46,11 @@ function Form({
       </p>
       <fieldset className={`form__fieldset ${formFieldsetType}`}>
         {children}
-        <Button
-          buttonText={buttonText}
-        />
+        <div className={`form__button ${formButtonType}`}>
+          <Button
+            buttonText={buttonText}
+          />
+        </div>
       </fieldset>
     </form>
   );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 import RegisterPopup from '../RegisterPopup';
 import { PlaceContext } from '../../contexts/PlaceContext';
@@ -10,11 +10,38 @@ import Footer from '../Footer';
 import SavedNews from '../SavedNews';
 
 function App() {
+  const [registerPopupOpen, setRegisterPopupOpen] = useState(false);
+  const [loginPopupOpen, setLoginPopupOpen] = useState(false);
+  const [infoTooltipPopupOpen, setInfoTooltipPopupOpen] = useState(false);
+
+  const closeAllPopups = () => {
+    setRegisterPopupOpen(false);
+    setLoginPopupOpen(false);
+    setInfoTooltipPopupOpen(false);
+  }
+
+  const handlerRegisterPopupClick = () => {
+    closeAllPopups();
+    setRegisterPopupOpen(true);
+  }
+
+  const handlerLoginPopupClick = () => {
+    closeAllPopups();
+    setLoginPopupOpen(true);
+  }
+
+  const handlerInfoTooltipPopupClick = () => {
+    closeAllPopups();
+    setInfoTooltipPopupOpen(true);
+  }
+
   return (
     <>
       <Route exact path="/">
         <PageContext.Provider value="main">
-          <Main />
+          <Main
+            onLoginPopup={handlerLoginPopupClick}
+          />
         </PageContext.Provider>
       </Route>
 
@@ -25,15 +52,21 @@ function App() {
       </Route>
 
       <RegisterPopup
-        isOpen={false}
+        isOpen={registerPopupOpen}
+        onClose={closeAllPopups}
+        onLoginPopup={handlerLoginPopupClick}
       />
 
       <LoginPopup
-        isOpen={false}
+        isOpen={loginPopupOpen}
+        onClose={closeAllPopups}
+        onRegisterPopup={handlerRegisterPopupClick}
       />
 
       <InfoTooltip
-        isOpen={false}
+        isOpen={infoTooltipPopupOpen}
+        onClose={closeAllPopups}
+        onLoginPopup={handlerLoginPopupClick}
       />
 
       <PlaceContext.Provider value="footer">

@@ -11,7 +11,7 @@
 }
 
 .cards__list_page_main {
-  margin: 62px 0;
+  margin: 0;
   padding: 0;
   grid-template-columns: repeat(auto-fit, 400px);
   height: 576px;
@@ -31,6 +31,7 @@
 
   .cards__list_page_main {
     grid-template-columns: repeat(auto-fit, 224px);
+    height: 420px;
   }
 
   .cards__list_page_saved-news {
@@ -39,11 +40,19 @@
 }
 
 @media screen and (max-width: 970px) {
+  .cards__list_page_saved-news {
+    padding: 32px 40px;
+  }
+}
+
+@media screen and (max-width: 535px) {
   .cards__list_page_main {
-    margin: 32px 0;
+    grid-template-columns: repeat(auto-fit, 288px);
+    height: 1354px;
   }
 
   .cards__list_page_saved-news {
-    padding: 32px 40px;
+    grid-template-columns: repeat(auto-fit, 288px);
+    padding: 24px 16px;
   }
 }

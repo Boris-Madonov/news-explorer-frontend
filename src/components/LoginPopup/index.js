@@ -7,12 +7,15 @@ import { PlaceContext } from '../../contexts/PlaceContext';
 
 function LoginPopup({
   isOpen,
+  onClose,
+  onRegisterPopup,
 }) {
   return (
     <PlaceContext.Provider value="login">
       <Popup
       name="login"
       isOpen={isOpen}
+      onClose={onClose}
       >
         <Form
           formTitle="Вход"
@@ -39,7 +42,9 @@ function LoginPopup({
             maxLength=""
           />
         </Form>
-        <PopupLink />
+        <PopupLink
+          onClick={onRegisterPopup}
+        />
       </Popup>
     </PlaceContext.Provider>
   );

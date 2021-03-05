@@ -196,3 +196,36 @@
     right: 8px;
   }
 }
+
+@media screen and (max-width: 535px) {
+  .card {
+    width: 288px;
+    height: 446px;
+  }
+
+  .card__image {
+    height: 196px;
+  }
+
+  .card__date {
+    margin: 196px 0 0;
+  }
+
+  .card__info {
+    height: 154px;
+    margin: 10px 0 0;
+    -webkit-line-clamp: 6;
+  }
+
+  .card__title {
+    line-height: 28px;
+  }
+
+  .card__text {
+    margin: 10px 0 0;
+  }
+
+  .card__source {
+    margin: 8px 0 0;
+  }
+}

@@ -6,10 +6,14 @@ import Preloader from '../Preloader';
 import SearchResults from '../SearchResults';
 
 
-function Main() {
+function Main({
+  onLoginPopup,
+}) {
   return (
     <>
-      <Header />
+      <Header
+        onLoginPopup={onLoginPopup}
+      />
       <Preloader />
       <SearchResults />
       <NoResults />

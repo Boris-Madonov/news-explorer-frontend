@@ -34,13 +34,11 @@
 
 .popup__close-button {
   position: absolute;
-  left: 100%;
-  bottom: 100%;
-  width: 40px;
-  height: 40px;
+  right: -40px;
+  top: -40px;
   padding: 0;
   border: none;
-  background-image: url(../../images/icon/close.svg);
+  color: #FFFFFF;
   background-position: center;
   background-color: unset;
   cursor: pointer;
@@ -53,4 +51,35 @@
 
 .popup__close-button:focus {
   outline: none;
+}
+
+.popup__close-button-icon {
+  vertical-align: top;
+  width: 40px;
+  height: 40px;
+}
+
+@media screen and (max-width: 500px) {
+  .popup {
+    background-image: url(../../images/searchformbg_mobile.png);
+  }
+
+  .popup__container {
+    width: 100vw;
+    height: 100vh;
+    top: 56px;
+    left: 0;
+    margin-right: 0;
+    transform: none;
+  }
+
+  .popup__close-button {
+    right: 16px;
+    top: -40px;
+  }
+
+  .popup__close-button-icon {
+    width: 24px;
+    height: 24px;
+  }
 }

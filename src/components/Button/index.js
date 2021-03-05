@@ -5,6 +5,7 @@ import './index.css';
 
 function Button({
   buttonText,
+  onClick,
 }) {
   const place = useContext(PlaceContext);
   const page = useContext(PageContext);
@@ -37,6 +38,7 @@ function Button({
     <button
       className={`button ${buttonPageType} ${buttonType}`}
       type={type}
+      onClick={onClick}
     >
       {buttonText}
     </button>

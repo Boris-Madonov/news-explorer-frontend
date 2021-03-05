@@ -21,11 +21,8 @@ function PageLink({
 
   let linkType;
 
-  if (linkPlace === "popupLoginRegister") {
-    linkType = "page-link__place_popup page-link__login-register";
-  } else if (linkPlace === "popupInfoTooltip") {
-    linkType = "page-link__place_popup page-link__info-tooltip";
-  } else if (linkPlace === "headerLogo") {
+
+  if (linkPlace === "headerLogo") {
     linkType = "page-link__place_logo";
   } else if (linkPlace === "headerMenu") {
     linkType = "page-link__place_menu page-link__header";
