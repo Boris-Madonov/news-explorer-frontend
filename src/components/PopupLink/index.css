@@ -1,0 +1,47 @@
+.popup-link {
+  display: flex;
+  flex-direction: row;
+  font-family: 'Inter';
+}
+
+.popup-link_place_login-register {
+  margin: 16px auto 28px;
+}
+
+.popup-link_place_info-tooltip {
+  margin: 14px 0 51px 32px;
+
+}
+
+.popup-link__text {
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0;
+  color: #000000;
+}
+
+.popup-link__button {
+  box-sizing: border-box;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background-color: unset;
+  transition: opacity .5s linear;
+  color: #2F71E5;
+  font-family: 'Inter';
+  font-weight: normal;
+}
+
+.popup-link__button:hover {
+  opacity: .6;
+}
+
+.popup-link__button_place_login-register {
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.popup-link__button_place_info-tooltip {
+  font-size: 18px;
+  line-height: 22px;
+}
