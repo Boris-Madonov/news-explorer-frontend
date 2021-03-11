@@ -1,0 +1,93 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__name {
+  font-family: 'Roboto';
+}
+
+.form__name_place_login-register {
+  margin: 34px 0 22px 36px;
+  color: #1A1B22;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 900;
+}
+
+.form__name_place_search {
+  margin: 32px auto 64px;
+  padding-right: 63px;
+  width: 608px;
+  color: #FFFFFF;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  box-sizing: border-box;
+}
+
+.form__fieldset {
+  margin: 0 auto;
+  padding: 0;
+  border: none;
+}
+
+.form__fieldset_place_login-register {
+
+}
+
+.form__fieldset_place_search {
+  position: relative;
+}
+
+.form__button {
+  margin: 0 auto;
+}
+
+.form__button_place_login-register {
+  width: 358px;
+  height: 64px;
+}
+
+.form__button_place_search {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 168px;
+  height: 64px;
+}
+
+@media screen and (max-width: 970px) {
+  .form__name_place_search {
+    margin: 16px auto 48px;
+    padding-right: 0;
+    width: 448px;
+  }
+
+  .form__button_place_search {
+    width: 160px;
+    height: 56px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .form__name_place_search {
+    margin: 16px auto 122px;
+    width: 288px;
+  }
+
+  .form__name_place_login-register {
+    margin: 16px 16px 22px 16px;
+  }
+
+  .form__fieldset {
+    margin: 0 16px;
+  }
+
+  .form__button_place_search {
+    position: relative;
+    width: 288px;
+    height: 56px;
+    margin: 16px auto 0;
+  }
+}

@@ -1,0 +1,73 @@
+.page-link {
+  box-sizing: border-box;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity .5s linear;
+}
+
+.page-link:hover {
+  opacity: .6;
+}
+
+.page-link__place_logo {
+  font-family: 'Roboto Slab';
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.page-link__place_menu {
+  font-family: 'Roboto';
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.page-link__footer {
+  font-weight: 400;
+  color: #1A1B22;
+}
+
+.page-link__header { /* это класс для серого цвета ссылки */
+  font-weight: 500;
+  color: #B6BCBF;
+}
+
+.page-link__header_active { /* тут перекрываем серый цвет для активной страницы */
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+  border-bottom: 3px solid;
+  padding-bottom: 27px;
+}
+
+.page-link__page_saved-news { /* тут перекрываем цвет для страницы savedNews */
+  color: #1A1B22;
+  border-color: #1A1B22;
+}
+
+@media screen and (max-width: 970px) {
+  .page-link__place_menu {
+    font-size: 16px;
+  }
+
+  .page-link__header_active {
+    padding-bottom: 21px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .page-link__header_active {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .page-link__header {
+    color: #FFFFFF;
+    font-size: 18px;
+    line-height: 56px;
+  }
+
+  .page-link__page_saved-news {
+    color: #1A1B22;
+  }
+}
