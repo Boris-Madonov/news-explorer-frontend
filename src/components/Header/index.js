@@ -42,7 +42,7 @@ function Header({
     menuListTheme = "header__menu-list_theme_white";
   }
 
-  const buttonText = loggedIn
+  const buttonText = !loggedIn
     ? <>
         Грета
         <LogOut
