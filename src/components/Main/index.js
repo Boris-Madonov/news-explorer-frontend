@@ -7,12 +7,12 @@ import SearchResults from '../SearchResults';
 
 
 function Main({
-  onLoginPopup,
+  headerButtonClick,
 }) {
   return (
     <>
       <Header
-        onLoginPopup={onLoginPopup}
+        headerButtonClick={headerButtonClick}
       />
       <Preloader />
       <SearchResults />

@@ -2,10 +2,14 @@ import React from 'react';
 import Header from '../Header';
 import NewsCardList from '../NewsCardList';
 
-function SavedNews() {
+function SavedNews({
+  headerButtonClick,
+}) {
   return (
     <>
-      <Header />
+      <Header
+        headerButtonClick={headerButtonClick}
+      />
       <NewsCardList />
     </>
   );

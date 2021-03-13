@@ -4,18 +4,19 @@ import SearchForm from '../SearchForm';
 import PageLink from '../PageLink';
 import { PageContext } from '../../contexts/PageContext';
 import { PlaceContext } from '../../contexts/PlaceContext';
+import { LoggedInContext } from '../../contexts/LoggedInContext';
 import SavedNewsHeader from '../SavedNewsHeader';
 import './index.css';
 import { CloseIcon, LogOut, MenuIcon } from '../../images/icon';
 
 function Header({
-  onLoginPopup,
-  loggedIn,
+  headerButtonClick,
 }) {
   const [dropDown, setDropDown] = useState("");
   const [headerType, setHeaderType] = useState("");
   const [menuListType, setMenuListType] = useState("");
   const page = useContext(PageContext);
+  const loggedIn = useContext(LoggedInContext);
   const linkMainActive = page === "main"
     ? true
     : false;
@@ -42,7 +43,7 @@ function Header({
     menuListTheme = "header__menu-list_theme_white";
   }
 
-  const buttonText = !loggedIn
+  const buttonText = loggedIn
     ? <>
         Грета
         <LogOut
@@ -50,7 +51,7 @@ function Header({
         />
       </>
     : "Авторизоваться";
-  const hideLink = !loggedIn ? "" : "header__hide-link";
+  const hideLink = loggedIn ? "" : "header__hide-link";
   const dropDownIcon = dropDown === ""
     ? <MenuIcon
         className="header__menu-dropdown-icon"
@@ -115,7 +116,7 @@ function Header({
             >
               <Button
                 buttonText={buttonText}
-                onClick={onLoginPopup}
+                onClick={headerButtonClick}
               />
             </div>
           </nav>

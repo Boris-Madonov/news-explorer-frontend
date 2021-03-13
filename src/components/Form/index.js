@@ -7,6 +7,7 @@ function Form({
   formTitle,
   buttonText,
   children,
+  onSubmit,
 }) {
   const place = useContext(PlaceContext);
 
@@ -38,7 +39,7 @@ function Form({
       name={`${place}-form`}
       action="#"
       method={method}
-      onSubmit=""
+      onSubmit={onSubmit}
       noValidate
     >
       <p className={`form__name ${formNameType}`}>
