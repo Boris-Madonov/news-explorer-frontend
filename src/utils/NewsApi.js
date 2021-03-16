@@ -1,4 +1,4 @@
-const BASE_URL = "https://newsapi.org/v2";
+const BASE_URL = "https://nomoreparties.co/news/v2";
 const apiKey = "f1d32e395d6545608c5714ec37c3a91a";
 const pageSize = "100";
 
