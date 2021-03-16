@@ -18,7 +18,6 @@ function SearchForm({
     setValues,
     setIsValid,
     isValid,
-    isFormValid
   } = useForm(submitForm);
 
   useEffect(() => {
@@ -31,12 +30,19 @@ function SearchForm({
     setIsValid({
       searchNews: false,
     });
-    setFormError('');
-  }, [setValidationError, setValues, setIsValid, setFormError]);
+  }, [setValidationError, setValues, setIsValid, setFormError, onSearch]);
 
   function submitForm(e) {
-    const { email, password } = values;
-    onSearch(email, password);
+    const { searchNews } = values;
+
+    if (!searchNews) {
+      setFormError("Введите ключевое слово")
+      return;
+    }
+
+    const keyword = searchNews.charAt(0).toUpperCase() + searchNews.slice(1)
+    onSearch(keyword);
+    setFormError("");
   };
 
   return (
@@ -49,7 +55,7 @@ function SearchForm({
           formTitle="Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете."
           buttonText="Искать"
           onSubmit={handleSubmit}
-          isDisabled={!isFormValid}
+          isDisabled=""
           formError={formError}
         >
           <FormInput

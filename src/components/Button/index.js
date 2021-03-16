@@ -46,7 +46,8 @@ function Button({
     <button
       className={`button ${buttonPageType} ${buttonType} ${buttonDisabled}`}
       type={type}
-      onClick={isDisabled ? () => {return} : onClick}
+      onClick={onClick}
+      disabled={isDisabled}
     >
       {buttonText}
     </button>

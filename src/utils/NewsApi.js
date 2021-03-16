@@ -16,7 +16,7 @@ const response = (res) => { // функция обработки ответа
 };
 
 export const getArticles = (searchText) => {
-  return fetch(`${BASE_URL}/everything?q=${searchText}&from=${currentDateFrom}&to=${currentDateTo}&pageSize=${pageSize}&apiKey=${apiKey}`, {
+  return fetch(`${BASE_URL}/everything?language=ru&q=${searchText}&from=${currentDateFrom}&to=${currentDateTo}&pageSize=${pageSize}&apiKey=${apiKey}`, {
     method: 'GET',
   })
   .then(response)

@@ -17,23 +17,27 @@ function Form({
   let formFieldsetType;
   let formButtonType;
   let method;
+  let errorType;
 
   if (place === "login") {
     formNameType = "form__name_place_login-register";
     formFieldsetType = "form__fieldset_place_login-register";
     formButtonType = "form__button_place_login-register";
     method = "POST";
+    errorType = "form__error_place_login-register"
   } else if (place === "register") {
     formNameType = "form__name_place_login-register";
     formFieldsetType = "form__fieldset_place_login-register";
     formButtonType = "form__button_place_login-register";
     method = "POST";
+    errorType = "form__error_place_login-register"
   } else if (place === "search") {
     formNameType = "form__name_place_search";
     formFieldsetType = "form__fieldset_place_search";
     formButtonType = "form__button_place_search";
     method = "GET";
-  }
+    errorType = "form__error_place_search"
+  };
 
   return(
     <form
@@ -52,7 +56,7 @@ function Form({
         <div className={`form__button ${formButtonType}`}>
           {formError === ""
             ? ""
-            : <span className="form__error">{formError}</span>
+            : <span className={`form__error ${errorType}`}>{formError}</span>
           }
           <Button
             buttonText={buttonText}

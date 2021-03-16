@@ -21,8 +21,12 @@ import * as newsApi from '../../utils/NewsApi';
 
 function App() {
   const reduceArr = (arr) => { // функция для удаления элементов из массива новостей
-    arr.splice(3, arr.length-3);
-    return arr;
+    if (arr === null) {
+      return [];
+    } else {
+      arr.splice(3, arr.length-3);
+      return arr;
+    }
   };
 
   const [registerPopupOpen, setRegisterPopupOpen] = useState(false);
@@ -35,7 +39,9 @@ function App() {
   const [isShowPreloader, setShowPreloader] = useState(false);
   const [isShowButton, setShowButton] = useState(true);
   const [isShowSearchResults, setShowSearchResults] = useState(() => {
-    if (JSON.parse(getArticles()).length === 0) {
+    if (JSON.parse(getArticles()) === null) {
+      return false
+    } else if (JSON.parse(getArticles()).length === 0) {
       return false;
     } else {
       return true;

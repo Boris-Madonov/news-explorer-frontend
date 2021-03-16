@@ -25,7 +25,6 @@ function Main({
       <Header
         headerButtonClick={headerButtonClick}
         onSearch={onSearch}
-        savedArticles={savedArticles}
         setFormError={setFormError}
         formError={formError}
       />
