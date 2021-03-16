@@ -3,9 +3,11 @@ import preloaderPath from '../../images/ellipse.png'
 
 import "./index.css"
 
-function Preloader() {
+function Preloader({
+  isShowPreloader,
+}) {
   return (
-    <section className="preloader">
+    <section className={`preloader ${isShowPreloader && `preloader_opened`}`}>
       <div className="preloader__elements">
         <img
           className="preloader__circle"

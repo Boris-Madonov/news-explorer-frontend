@@ -4,13 +4,19 @@ import NewsCardList from '../NewsCardList';
 
 function SavedNews({
   headerButtonClick,
+  articles,
+  onCardButtonClick,
 }) {
   return (
     <>
       <Header
         headerButtonClick={headerButtonClick}
+        savedArticles={articles}
       />
-      <NewsCardList />
+      <NewsCardList
+        articles={articles}
+        onCardButtonClick={onCardButtonClick}
+      />
     </>
   );
 }

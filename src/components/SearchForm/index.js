@@ -4,7 +4,9 @@ import FormInput from "../FormInput";
 import { PlaceContext } from '../../contexts/PlaceContext';
 import './index.css';
 
-function SearchForm() {
+function SearchForm({
+  onSearch,
+}) {
   const [searchText, setSearchText] = useState('');
 
   const handleChangeSearch = (e) => {
@@ -18,7 +20,8 @@ function SearchForm() {
       return;
     }
 
-    handleChangeSearch('');
+    onSearch(searchText);
+    setSearchText('');
   };
 
   return (

@@ -5,18 +5,22 @@ import PageLink from '../PageLink';
 import { PageContext } from '../../contexts/PageContext';
 import { PlaceContext } from '../../contexts/PlaceContext';
 import { LoggedInContext } from '../../contexts/LoggedInContext';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import SavedNewsHeader from '../SavedNewsHeader';
 import './index.css';
 import { CloseIcon, LogOut, MenuIcon } from '../../images/icon';
 
 function Header({
   headerButtonClick,
+  onSearch,
+  savedArticles,
 }) {
   const [dropDown, setDropDown] = useState("");
   const [headerType, setHeaderType] = useState("");
   const [menuListType, setMenuListType] = useState("");
   const page = useContext(PageContext);
   const loggedIn = useContext(LoggedInContext);
+  const currentUser = useContext(CurrentUserContext);
   const linkMainActive = page === "main"
     ? true
     : false;
@@ -45,7 +49,7 @@ function Header({
 
   const buttonText = loggedIn
     ? <>
-        Грета
+        {currentUser.name}
         <LogOut
           className="header__logOutIcon"
         />
@@ -122,7 +126,15 @@ function Header({
           </nav>
         </header>
       </PlaceContext.Provider>
-      {page === "main" ? <SearchForm /> : <SavedNewsHeader />}
+      {
+        page === "main"
+          ? <SearchForm
+            onSearch={onSearch}
+          />
+          : <SavedNewsHeader
+            savedArticles={savedArticles}
+          />
+      }
     </section>
   );
 }

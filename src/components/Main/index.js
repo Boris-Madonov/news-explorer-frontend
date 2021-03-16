@@ -8,15 +8,36 @@ import SearchResults from '../SearchResults';
 
 function Main({
   headerButtonClick,
+  onSearch,
+  articles,
+  onShowMore,
+  isShowPreloader,
+  isShowButton,
+  isShowSearchResults,
+  isShowNoResults,
+  onCardButtonClick,
+  savedArticles,
 }) {
   return (
     <>
       <Header
         headerButtonClick={headerButtonClick}
+        onSearch={onSearch}
       />
-      <Preloader />
-      <SearchResults />
-      <NoResults />
+      <Preloader
+        isShowPreloader={isShowPreloader}
+      />
+      <SearchResults
+        articles={articles}
+        onShowMore={onShowMore}
+        isShowButton={isShowButton}
+        isShowSearchResults={isShowSearchResults}
+        onCardButtonClick={onCardButtonClick}
+        savedArticles={savedArticles}
+      />
+      <NoResults
+        isShowNoResults={isShowNoResults}
+      />
       <About />
     </>
   );

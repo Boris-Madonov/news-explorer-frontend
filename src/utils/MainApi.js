@@ -22,3 +22,38 @@ export const getUserInfo = () => {
   })
   .then(response)
 };
+
+export const getSavedArticles = () => {
+  return fetch(`${BASE_URL}/articles`, {
+    method: 'GET',
+    headers: getHeaders()
+  })
+  .then(response)
+};
+
+export const saveArticle = (article, keyword) => {
+  return fetch(`${BASE_URL}/articles`, {
+      method: 'POST',
+      headers: getHeaders(),
+      body: JSON.stringify({
+        keyword: keyword,
+        title: article.title,
+        description: article.description,
+        publishedAt: article.publishedAt,
+        source: {
+          name: article.source.name,
+        },
+        url: article.url,
+        urlToImage: article.urlToImage,
+      }),
+  })
+  .then(response)
+};
+
+export const deleteArticle = (id) => {
+  return fetch(`${BASE_URL}/articles/${id}`, {
+      method: 'DELETE',
+      headers: getHeaders()
+  })
+  .then(response)
+};

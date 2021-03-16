@@ -1,0 +1,54 @@
+[
+  {
+    "source": {
+      "id": "techcrunch",
+      "name": "TechCrunch"
+    },
+    "author": "Anthony Ha",
+    "title": "Daily Crunch: Jack Dorsey and Jay Z invest in bitcoin development",
+    "description": "Jack Dorsey and Jay Z create a bitcoin endowment, Datadog acquires a Startup Battlefield company and BuzzFeed experiments with AI-generated quizzes. This is your Daily Crunch for February 12, 2021. Oh, and before we get started: Consider applying to the Early…",
+    "url": "http://techcrunch.com/2021/02/12/daily-crunch-jack-dorsey-and-jay-z-invest-in-bitcoin-development/",
+    "urlToImage": "https://techcrunch.com/wp-content/uploads/2020/07/GettyImages-887657568.jpg?w=600",
+    "publishedAt": "2021-02-12T23:10:51Z",
+    "content": "Jack Dorsey and Jay Z create a bitcoin endowment, Datadog acquires a Startup Battlefield company and BuzzFeed experiments with AI-generated quizzes. This is your Daily Crunch for February 12, 2021.\r\n… [+2805 chars]"
+  },
+  {
+    "source": {
+      "id": "mashable",
+      "name": "Mashable"
+    },
+    "author": "Jack Morse",
+    "title": "Coinbase says unmasking Satoshi Nakamoto might harm its business",
+    "description": "Some things are best left a mystery — at least as far as Coinbase is concerned. \nThe San Francisco-based cryptocurrency exchange has been preparing to go public since last year, and in a Thursday prospectus filed with the Securities and Exchange Commission (S…",
+    "url": "https://mashable.com/article/coinbase-direct-listing-unmasking-bitcoin-creator-satoshi-nakamoto/",
+    "urlToImage": "https://mondrian.mashable.com/2021%252F02%252F26%252Fe8%252F17dd59c8ab704170bf5e29da12d9ebbf.c6b86.jpg%252F1200x630.jpg?signature=Fs2g1MN2HN_UfNi1kogIjVxyo8E=",
+    "publishedAt": "2021-02-26T00:40:52Z",
+    "content": "Some things are best left a mystery at least as far as Coinbase is concerned. \r\nThe San Francisco-based cryptocurrency exchange has been preparing to go public since last year, and in a Thursday pros… [+1953 chars]"
+  },
+  {
+    "source": {
+      "id": "cnn",
+      "name": "CNN"
+    },
+    "author": "Julia Horowitz, CNN Business",
+    "title": "How bitcoin is like a teenager",
+    "description": "With the value of bitcoin in the market topping $1 trillion, longtime backers may be wiping tears from their eyes. The cryptocurrency is growing up.",
+    "url": "https://www.cnn.com/2021/02/21/investing/stocks-week-ahead/index.html",
+    "urlToImage": "https://cdn.cnn.com/cnnnext/dam/assets/201124080935-02-bitcoin---stock-super-tease.jpg",
+    "publishedAt": "2021-02-21T13:50:55Z",
+    "content": null
+  },
+  {
+    "source": {
+      "id": null,
+      "name": "Bitcoin.com"
+    },
+    "author": null,
+    "title": "Cryptocurrency Markets Catch Fresh Momentum, BTC Price Taps Psychological $60K Handle – Markets and Prices Bitcoin News - Bitcoin News",
+    "description": "The price of bitcoin cracked a new all-time high on Saturday morning reaching $60,120 per unit at around 6:25 a.m. (ET).",
+    "url": "https://news.bitcoin.com/cryptocurrency-markets-catch-fresh-momentum-btc-price-taps-psychological-60k-handle/",
+    "urlToImage": "https://news.bitcoin.com/wp-content/uploads/2021/03/jjjjjj.jpg",
+    "publishedAt": "2021-03-13T12:38:19Z",
+    "content": "The price of bitcoin cracked a new all-time high on Saturday morning reaching $60,120 per unit at around 6:25 a.m. (ET). Bitcoin now has a 1.12 trillion-dollar market valuation and a dominance level … [+3936 chars]"
+  }
+]

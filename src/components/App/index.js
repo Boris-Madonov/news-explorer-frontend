@@ -12,46 +12,80 @@ import Footer from '../Footer';
 import SavedNews from '../SavedNews';
 import ProtectedRoute from '../ProtectedRoute'
 import { setToken, getToken, removeToken } from '../../utils/token';
+import { setArticles, getArticles } from '../../utils/articles';
+import { setKeyword, getKeyword} from '../../utils/keyword';
 import * as auth from '../../utils/auth';
-import * as MainApi from '../../utils/MainApi';
+import * as mainApi from '../../utils/MainApi';
+import * as newsApi from '../../utils/NewsApi';
 
 function App() {
+  const reduceArr = (arr) => { // функция для удаления элементов из массива новостей
+    arr.splice(3, arr.length-3);
+    return arr;
+  };
+
   const [registerPopupOpen, setRegisterPopupOpen] = useState(false);
   const [loginPopupOpen, setLoginPopupOpen] = useState(false);
   const [infoTooltipPopupOpen, setInfoTooltipPopupOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState('');
+  const [foundArticles, setFoundArticles] = useState(reduceArr(JSON.parse(getArticles())));
+  const [savedArticles, setSavedArticles] = useState([]);
+  const [isShowPreloader, setShowPreloader] = useState(false);
+  const [isShowButton, setShowButton] = useState(true);
+  const [isShowSearchResults, setShowSearchResults] = useState(() => {
+    if (JSON.parse(getArticles()).length === 0) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+  const [isShowNoResults, setShowNoResults] = useState(false);
+
+  // обработчик нажатия кнопки "Показать еще"
+  const handlerShowMoreClick = () => {
+    const arr = JSON.parse(getArticles());
+    const pos = foundArticles.length + 3;
+    const n = arr.length - pos;
+
+    arr.splice(pos, n);
+
+    setFoundArticles(arr);
+
+    if (n <= 0) {
+      setShowButton(false);
+    }
+  };
 
   // открытие и закрытие модальных окон
   const closeAllPopups = () => {
     setRegisterPopupOpen(false);
     setLoginPopupOpen(false);
     setInfoTooltipPopupOpen(false);
-  }
+  };
 
   const handlerRegisterPopupClick = () => {
     closeAllPopups();
     setRegisterPopupOpen(true);
-  }
+  };
 
   const handlerLoginPopupClick = () => {
     closeAllPopups();
     setLoginPopupOpen(true);
-  }
+  };
 
   const handlerInfoTooltipPopupClick = () => {
     closeAllPopups();
     setInfoTooltipPopupOpen(true);
-  }
+  };
 
   // загрузка данных пользователя
   useEffect(() => {
     if (loggedIn) {
-      new Promise((res) => {
-        res(MainApi.getUserInfo());
-      })
-        .then((user) => {
+      Promise.all([mainApi.getUserInfo(), mainApi.getSavedArticles()])
+        .then(([user, articles]) => {
           setCurrentUser(user);
+          setSavedArticles(articles);
         })
         .catch((err) => {
           console.log(err);
@@ -61,7 +95,7 @@ function App() {
 
   // проверка токена пользователя
   const tokenCheck = () => {
-    const jwt = getToken('jwt');
+    const jwt = getToken();
 
     if(!jwt) {
       return;
@@ -78,14 +112,14 @@ function App() {
       }
       console.log(err);
     });
-  }
+  };
 
   useEffect(() => {
     tokenCheck();
   }, []);
 
   // регистрация пользователя
-  const handleRegister = (userEmail, userPassword, userName) => {
+  const handlerRegister = (userEmail, userPassword, userName) => {
     auth.register(userEmail, userPassword, userName)
       .then(() => {
         handlerInfoTooltipPopupClick();
@@ -100,7 +134,7 @@ function App() {
   };
 
   // авторизация пользователя
-  const handleLogin = (userEmail, userPassword) => {
+  const handlerLogin = (userEmail, userPassword) => {
     auth.authorize(userEmail, userPassword)
     .then((data) => {
       setToken(data.token)
@@ -119,9 +153,69 @@ function App() {
   };
 
   // выход
-  const handleLogOut = () => {
+  const handlerLogOut = () => {
     setLoggedIn(false);
-    removeToken('jwt');
+    removeToken();
+  };
+
+  // запрос новостей
+  const handlerSearchNews = (searchText) => {
+    setShowPreloader(true);
+    setShowSearchResults(false);
+    setShowNoResults(false);
+    setKeyword(searchText);
+    newsApi.getArticles(searchText)
+    .then((res) => {
+      setShowPreloader(false);
+      if (res.articles.length === 0) {
+        setShowNoResults(true)
+      } else {
+        setArticles(JSON.stringify(res.articles));
+        setFoundArticles(reduceArr(res.articles));
+        setShowSearchResults(true);
+        if (res.articles.length <= 3) {
+          setShowButton(false);
+        } else {
+          setShowButton(true);
+        }
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  };
+
+  //удаление сохраненной новости
+  const deleteArticle = (article) => {
+    mainApi.deleteArticle(article._id)
+      .then(() => {
+        const newArrSavedArticles = savedArticles.filter((a) => a._id !== article._id);
+        setSavedArticles(newArrSavedArticles);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  };
+
+  // сохранение новости
+  const handlerCardButtonClick = (article) => {
+    if (!loggedIn) {
+      setLoginPopupOpen(true);
+    } else {
+      const checkArticle = savedArticles.find(a => a.title === article.title);
+
+      if (checkArticle !== undefined) {
+        deleteArticle(checkArticle);
+      } else {
+        mainApi.saveArticle(article, getKeyword())
+          .then((res) => {
+            setSavedArticles([res, ...savedArticles])
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      }
+    }
   };
 
   return (
@@ -134,9 +228,18 @@ function App() {
                 <Main
                   headerButtonClick={
                     loggedIn
-                      ? handleLogOut
+                      ? handlerLogOut
                       : handlerLoginPopupClick
                   }
+                  onSearch={handlerSearchNews}
+                  articles={foundArticles}
+                  onShowMore={handlerShowMoreClick}
+                  isShowPreloader={isShowPreloader}
+                  isShowButton={isShowButton}
+                  isShowSearchResults={isShowSearchResults}
+                  isShowNoResults={isShowNoResults}
+                  onCardButtonClick={handlerCardButtonClick}
+                  savedArticles={savedArticles}
                 />
               </PageContext.Provider>
             </Route>
@@ -144,7 +247,9 @@ function App() {
             <ProtectedRoute exact path="/saved-news" loggedIn={loggedIn}>
               <PageContext.Provider value="savedNews">
                   <SavedNews
-                    headerButtonClick={handleLogOut}
+                    headerButtonClick={handlerLogOut}
+                    articles={savedArticles}
+                    onCardButtonClick={deleteArticle}
                   />
                 </PageContext.Provider>
             </ProtectedRoute>
@@ -155,14 +260,14 @@ function App() {
           isOpen={registerPopupOpen}
           onClose={closeAllPopups}
           onLoginPopup={handlerLoginPopupClick}
-          onRegister={handleRegister}
+          onRegister={handlerRegister}
         />
 
         <LoginPopup
           isOpen={loginPopupOpen}
           onClose={closeAllPopups}
           onRegisterPopup={handlerRegisterPopupClick}
-          onLogin={handleLogin}
+          onLogin={handlerLogin}
         />
 
         <InfoTooltip

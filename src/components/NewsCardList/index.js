@@ -1,27 +1,38 @@
 import React, { useContext } from 'react';
-import Card from "../Card";
-import cards from "../../utils/cards.json"
+import NewsCard from "../NewsCard";
 import { PageContext } from '../../contexts/PageContext'
 import "./index.css"
 
-function NewsCardList() {
+function NewsCardList({
+  articles,
+  onCardButtonClick,
+  savedArticles,
+}) {
   const page = useContext(PageContext);
 
-  let cardListType;
+  let sectionShow;
+  let newsCardListType;
 
   if (page === "main") {
-    cardListType = "cards__list_page_main";
+    sectionShow = "news-cards_show"
+    newsCardListType = "news-cards__list_page_main";
   } else if (page === "savedNews") {
-    cardListType = "cards__list_page_saved-news";
+    sectionShow = articles.length === 0
+      ? ""
+      : "news-cards_show";
+    newsCardListType = "news-cards__list_page_saved-news";
   }
 
   return (
     <>
-      <section className="cards">
-        <ul className={`cards__list ${cardListType}`}>
-          {cards.map((card) => (
-            <Card
-              card={card}
+      <section className={`news-cards ${sectionShow}`}>
+        <ul className={`news-cards__list ${newsCardListType}`}>
+          {articles.map((article) => (
+            <NewsCard
+              key={article.title}
+              article={article}
+              onCardButtonClick={onCardButtonClick}
+              savedArticles={savedArticles}
             />
           ))}
         </ul>
