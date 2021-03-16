@@ -57,6 +57,7 @@
   line-height: 1.25;
   font-weight: 400;
   font-family: 'Inter';
+  max-width: 358px;
 }
 
 .input__field-error_hide {
@@ -83,5 +84,9 @@
 
   .input__field_place_login-register {
     width: auto;
+  }
+
+  .input__field-error {
+    max-width: 300px;
   }
 }

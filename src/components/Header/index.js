@@ -14,6 +14,8 @@ function Header({
   headerButtonClick,
   onSearch,
   savedArticles,
+  setFormError,
+  formError,
 }) {
   const [dropDown, setDropDown] = useState("");
   const [headerType, setHeaderType] = useState("");
@@ -130,6 +132,8 @@ function Header({
         page === "main"
           ? <SearchForm
             onSearch={onSearch}
+            setFormError={setFormError}
+            formError={formError}
           />
           : <SavedNewsHeader
             savedArticles={savedArticles}

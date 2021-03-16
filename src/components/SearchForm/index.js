@@ -1,27 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import Form from '../Form';
 import FormInput from "../FormInput";
 import { PlaceContext } from '../../contexts/PlaceContext';
+import useForm from '../../hooks/useForm';
 import './index.css';
 
 function SearchForm({
   onSearch,
+  setFormError,
+  formError,
 }) {
-  const [searchText, setSearchText] = useState('');
+  const {
+    handleChangeInput,
+    handleSubmit,
+    values,
+    setValidationError,
+    setValues,
+    setIsValid,
+    isValid,
+    isFormValid
+  } = useForm(submitForm);
 
-  const handleChangeSearch = (e) => {
-    setSearchText(e.target.value);
-  };
+  useEffect(() => {
+    setValidationError({
+      searchNews: "",
+    });
+    setValues({
+      searchNews: "",
+    });
+    setIsValid({
+      searchNews: false,
+    });
+    setFormError('');
+  }, [setValidationError, setValues, setIsValid, setFormError]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if(!searchText) {
-      return;
-    }
-
-    onSearch(searchText);
-    setSearchText('');
+  function submitForm(e) {
+    const { email, password } = values;
+    onSearch(email, password);
   };
 
   return (
@@ -34,14 +49,18 @@ function SearchForm({
           formTitle="Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете."
           buttonText="Искать"
           onSubmit={handleSubmit}
+          isDisabled={!isFormValid}
+          formError={formError}
         >
           <FormInput
-            inputName="SearchNews"
+            inputName="searchNews"
             type="text"
-            name="SearchNews"
+            name="searchNews"
             placeholder="Введите тему новости"
-            value={searchText || ''}
-            onChange={handleChangeSearch}
+            value={String(values.searchNews)}
+            onChange={handleChangeInput}
+            isValid={isValid.searchNews}
+            error=""
             minLength="1"
             maxLength="50"
           />

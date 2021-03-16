@@ -8,6 +8,8 @@ function Form({
   buttonText,
   children,
   onSubmit,
+  isDisabled,
+  formError,
 }) {
   const place = useContext(PlaceContext);
 
@@ -48,8 +50,13 @@ function Form({
       <fieldset className={`form__fieldset ${formFieldsetType}`}>
         {children}
         <div className={`form__button ${formButtonType}`}>
+          {formError === ""
+            ? ""
+            : <span className="form__error">{formError}</span>
+          }
           <Button
             buttonText={buttonText}
+            isDisabled={isDisabled}
           />
         </div>
       </fieldset>

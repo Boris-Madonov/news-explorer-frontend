@@ -1,37 +1,50 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import Form from '../Form';
 import FormInput from '../FormInput';
 import Popup from '../Popup';
 import PopupLink from '../PopupLink';
 import { PlaceContext } from '../../contexts/PlaceContext';
+import useForm from '../../hooks/useForm';
 
 function LoginPopup({
   isOpen,
   onClose,
   onRegisterPopup,
   onLogin,
+  setFormError,
+  formError,
 }) {
-  const [userEmail, setUserEmail] = useState('');
-  const [userPassword, setUserPassword] = useState('');
+  const {
+    handleChangeInput,
+    handleSubmit,
+    values,
+    validationError,
+    setValidationError,
+    setValues,
+    setIsValid,
+    isValid,
+    isFormValid
+  } = useForm(submitForm);
 
-  const handleChangeEmail = (e) => {
-    setUserEmail(e.target.value);
-  };
+  useEffect(() => {
+    setValidationError({
+      email: "",
+      password: "",
+    });
+    setValues({
+      email: "",
+      password: "",
+    });
+    setIsValid({
+      email: false,
+      password: false,
+    });
+    setFormError('');
+  }, [setValidationError, setValues, setIsValid, setFormError, isOpen]);
 
-  const handleChangePassword = (e) => {
-    setUserPassword(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if(!userEmail || !userPassword) {
-      return;
-    }
-
-    onLogin(userEmail, userPassword);
-    setUserEmail('');
-    setUserPassword('');
+  function submitForm(e) {
+    const { email, password } = values;
+    onLogin(email, password);
   };
 
   return (
@@ -45,24 +58,33 @@ function LoginPopup({
           formTitle="Вход"
           buttonText="Войти"
           onSubmit={handleSubmit}
+          isDisabled={!isFormValid}
+          formError={formError}
         >
           <FormInput
-            inputName="Email"
+            inputName="email"
             type="email"
             name="email"
             placeholder="Введите почту"
-            value={userEmail || ''}
-            onChange={handleChangeEmail}
+            value={String(values.email)}
+            onChange={handleChangeInput}
+            isValid={isValid.email}
+            error={`${values.email === ""
+              ? validationError.email
+              : `Неправильный формат email`
+            }`}
             minLength="1"
             maxLength="40"
           />
           <FormInput
-            inputName="Пароль"
+            inputName="password"
             type="password"
             name="password"
             placeholder="Введите пароль"
-            value={userPassword || ''}
-            onChange={handleChangePassword}
+            value={String(values.password)}
+            onChange={handleChangeInput}
+            isValid={isValid.password}
+            error={validationError.password}
             minLength="1"
             maxLength="40"
           />

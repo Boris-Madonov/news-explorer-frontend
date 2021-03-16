@@ -17,12 +17,17 @@ function Main({
   isShowNoResults,
   onCardButtonClick,
   savedArticles,
+  setFormError,
+  formError,
 }) {
   return (
     <>
       <Header
         headerButtonClick={headerButtonClick}
         onSearch={onSearch}
+        savedArticles={savedArticles}
+        setFormError={setFormError}
+        formError={formError}
       />
       <Preloader
         isShowPreloader={isShowPreloader}

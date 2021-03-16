@@ -27,6 +27,19 @@
   background-color: #2A65CC;
 }
 
+.button__submit_disabled {
+  background-color: #E6E8EB;
+  color: #B6BCBF;
+}
+
+.button__submit_disabled:hover {
+  background-color: #E6E8EB;
+}
+
+.button__submit_disabled:active {
+  background-color: #E6E8EB;
+}
+
 .button__header {
   height: 48px;
   padding: 0 16px;

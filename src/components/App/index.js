@@ -14,6 +14,7 @@ import ProtectedRoute from '../ProtectedRoute'
 import { setToken, getToken, removeToken } from '../../utils/token';
 import { setArticles, getArticles } from '../../utils/articles';
 import { setKeyword, getKeyword} from '../../utils/keyword';
+import { conflictError, badRequestError } from '../../utils/config';
 import * as auth from '../../utils/auth';
 import * as mainApi from '../../utils/MainApi';
 import * as newsApi from '../../utils/NewsApi';
@@ -41,6 +42,7 @@ function App() {
     }
   });
   const [isShowNoResults, setShowNoResults] = useState(false);
+  const [formError, setFormError] = useState('');
 
   // обработчик нажатия кнопки "Показать еще"
   const handlerShowMoreClick = () => {
@@ -125,11 +127,8 @@ function App() {
         handlerInfoTooltipPopupClick();
       })
       .catch((err) => {
-        if(err.status === 400) {
-          console.log(`Ошибка с кодом ${err.status} - не корректно заполнено одно из полей`);
-        } else {
-          console.log(err);
-        }
+        console.log(err);
+        setFormError(conflictError);
       });
   };
 
@@ -142,13 +141,8 @@ function App() {
       closeAllPopups();
     })
     .catch((err) => {
-      if(err.status === 400) {
-        console.log(`Ошибка с кодом ${err.status} - не передано одно из полей`);
-      } else if(err.status === 401) {
-        console.log(`Ошибка с кодом ${err.status} - пользователь с email не найден`);
-      } else {
-        console.log(err);
-      }
+      console.log(err);
+      setFormError(badRequestError);
     });
   };
 
@@ -240,6 +234,8 @@ function App() {
                   isShowNoResults={isShowNoResults}
                   onCardButtonClick={handlerCardButtonClick}
                   savedArticles={savedArticles}
+                  setFormError={setFormError}
+                  formError={formError}
                 />
               </PageContext.Provider>
             </Route>
@@ -261,6 +257,8 @@ function App() {
           onClose={closeAllPopups}
           onLoginPopup={handlerLoginPopupClick}
           onRegister={handlerRegister}
+          setFormError={setFormError}
+          formError={formError}
         />
 
         <LoginPopup
@@ -268,6 +266,8 @@ function App() {
           onClose={closeAllPopups}
           onRegisterPopup={handlerRegisterPopupClick}
           onLogin={handlerLogin}
+          setFormError={setFormError}
+          formError={formError}
         />
 
         <InfoTooltip

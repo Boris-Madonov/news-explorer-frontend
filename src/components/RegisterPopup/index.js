@@ -1,43 +1,53 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import Popup from '../Popup';
 import FormInput from '../FormInput';
 import Form from '../Form';
 import PopupLink from '../PopupLink';
 import { PlaceContext } from '../../contexts/PlaceContext';
+import useForm from '../../hooks/useForm';
 
 function RegisterPopup({
   isOpen,
   onClose,
   onLoginPopup,
   onRegister,
+  setFormError,
+  formError,
 }) {
-  const [userEmail, setUserEmail] = useState('');
-  const [userPassword, setUserPassword] = useState('');
-  const [userName, setUserName] = useState('');
+  const {
+    handleChangeInput,
+    handleSubmit,
+    values,
+    validationError,
+    setValidationError,
+    setValues,
+    setIsValid,
+    isValid,
+    isFormValid
+  } = useForm(submitForm);
 
-  const handleChangeEmail = (e) => {
-    setUserEmail(e.target.value);
-  };
+  useEffect(() => {
+    setValidationError({
+      email: "",
+      password: "",
+      name: "",
+    });
+    setValues({
+      email: "",
+      password: "",
+      name: "",
+    });
+    setIsValid({
+      email: false,
+      password: false,
+      name: false,
+    });
+    setFormError('');
+  }, [setValidationError, setValues, setIsValid, setFormError, isOpen]);
 
-  const handleChangePassword = (e) => {
-    setUserPassword(e.target.value);
-  };
-
-  const handleChangeName = (e) => {
-    setUserName(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if(!userEmail || !userPassword) {
-      return;
-    }
-
-    onRegister(userEmail, userPassword, userName);
-    setUserEmail('');
-    setUserPassword('');
-    setUserName('');
+  function submitForm(e) {
+    const { email, password, name } = values;
+    onRegister(email, password, name);
   };
 
   return (
@@ -51,34 +61,48 @@ function RegisterPopup({
           formTitle="Регистрация"
           buttonText="Зарегистрироваться"
           onSubmit={handleSubmit}
+          isDisabled={!isFormValid}
+          formError={formError}
         >
           <FormInput
-            inputName="Email"
+            inputName="email"
             type="email"
             name="email"
             placeholder="Введите почту"
-            value={userEmail || ''}
-            onChange={handleChangeEmail}
+            value={String(values.email)}
+            onChange={handleChangeInput}
+            isValid={isValid.email}
+            error={`${values.email === ""
+              ? validationError.email
+              : `Неправильный формат email`
+            }`}
             minLength="1"
             maxLength="40"
           />
           <FormInput
-            inputName="Пароль"
+            inputName="password"
             type="password"
             name="password"
             placeholder="Введите пароль"
-            value={userPassword || ''}
-            onChange={handleChangePassword}
+            value={String(values.password)}
+            onChange={handleChangeInput}
+            isValid={isValid.password}
+            error={validationError.password}
             minLength="1"
             maxLength="40"
           />
           <FormInput
-            inputName="Имя"
+            inputName="name"
             type="text"
             name="name"
             placeholder="Введите своё имя"
-            value={userName || ''}
-            onChange={handleChangeName}
+            value={String(values.name)}
+            onChange={handleChangeInput}
+            isValid={isValid.name}
+            error={`${values.name === ""
+              ? validationError.name
+              : `Имя не должно быть короче 2-х символов`
+            }`}
             minLength="2"
             maxLength="30"
           />
