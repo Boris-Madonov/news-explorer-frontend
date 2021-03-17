@@ -173,7 +173,7 @@ function App() {
         setArticles(JSON.stringify(res.articles));
         setFoundArticles(reduceArr(res.articles));
         setShowSearchResults(true);
-        if (res.articles.length <= 3) {
+        if (res.articles.length < 3) {
           setShowButton(false);
         } else {
           setShowButton(true);
