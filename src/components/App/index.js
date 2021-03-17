@@ -246,7 +246,7 @@ function App() {
               </PageContext.Provider>
             </Route>
 
-            <ProtectedRoute exact path="/saved-news" loggedIn={loggedIn}>
+            <ProtectedRoute exact path="/saved-news">
               <PageContext.Provider value="savedNews">
                   <SavedNews
                     headerButtonClick={handlerLogOut}

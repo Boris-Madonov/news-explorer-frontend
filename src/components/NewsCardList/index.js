@@ -24,20 +24,18 @@ function NewsCardList({
   }
 
   return (
-    <>
-      <section className={`news-cards ${sectionShow}`}>
-        <ul className={`news-cards__list ${newsCardListType}`}>
-          {articles.map((article) => (
-            <NewsCard
-              key={article.title}
-              article={article}
-              onCardButtonClick={onCardButtonClick}
-              savedArticles={savedArticles}
-            />
-          ))}
-        </ul>
-      </section>
-    </>
+    <section className={`news-cards ${sectionShow}`}>
+      <ul className={`news-cards__list ${newsCardListType}`}>
+        {articles.map((article) => (
+          <NewsCard
+            key={article.title}
+            article={article}
+            onCardButtonClick={onCardButtonClick}
+            savedArticles={savedArticles}
+          />
+        ))}
+      </ul>
+    </section>
   );
 }
 
