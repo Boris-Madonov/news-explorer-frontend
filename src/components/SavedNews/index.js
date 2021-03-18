@@ -2,11 +2,21 @@ import React from 'react';
 import Header from '../Header';
 import NewsCardList from '../NewsCardList';
 
-function SavedNews() {
+function SavedNews({
+  headerButtonClick,
+  articles,
+  onCardButtonClick,
+}) {
   return (
     <>
-      <Header />
-      <NewsCardList />
+      <Header
+        headerButtonClick={headerButtonClick}
+        savedArticles={articles}
+      />
+      <NewsCardList
+        articles={articles}
+        onCardButtonClick={onCardButtonClick}
+      />
     </>
   );
 }

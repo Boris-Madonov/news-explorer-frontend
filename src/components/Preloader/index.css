@@ -3,9 +3,18 @@
   padding: 80px 0;
   max-width: 1440px;
   background-color: #F5F6F7;
-  display: flex;
   flex-direction: column;
   align-items: center;
+  visibility: hidden;
+  display: none;
+  opacity: 0;
+  transition: visibility 1s, opacity 0.5s linear;
+}
+
+.preloader_opened {
+  visibility: visible;
+  opacity: 1;
+  display: flex;
 }
 
 .preloader__elements {

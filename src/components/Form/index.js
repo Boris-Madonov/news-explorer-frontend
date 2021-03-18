@@ -7,6 +7,9 @@ function Form({
   formTitle,
   buttonText,
   children,
+  onSubmit,
+  isDisabled,
+  formError,
 }) {
   const place = useContext(PlaceContext);
 
@@ -14,23 +17,27 @@ function Form({
   let formFieldsetType;
   let formButtonType;
   let method;
+  let errorType;
 
   if (place === "login") {
     formNameType = "form__name_place_login-register";
     formFieldsetType = "form__fieldset_place_login-register";
     formButtonType = "form__button_place_login-register";
     method = "POST";
+    errorType = "form__error_place_login-register"
   } else if (place === "register") {
     formNameType = "form__name_place_login-register";
     formFieldsetType = "form__fieldset_place_login-register";
     formButtonType = "form__button_place_login-register";
     method = "POST";
+    errorType = "form__error_place_login-register"
   } else if (place === "search") {
     formNameType = "form__name_place_search";
     formFieldsetType = "form__fieldset_place_search";
     formButtonType = "form__button_place_search";
     method = "GET";
-  }
+    errorType = "form__error_place_search"
+  };
 
   return(
     <form
@@ -38,7 +45,7 @@ function Form({
       name={`${place}-form`}
       action="#"
       method={method}
-      onSubmit=""
+      onSubmit={onSubmit}
       noValidate
     >
       <p className={`form__name ${formNameType}`}>
@@ -47,8 +54,13 @@ function Form({
       <fieldset className={`form__fieldset ${formFieldsetType}`}>
         {children}
         <div className={`form__button ${formButtonType}`}>
+          {formError === ""
+            ? ""
+            : <span className={`form__error ${errorType}`}>{formError}</span>
+          }
           <Button
             buttonText={buttonText}
+            isDisabled={isDisabled}
           />
         </div>
       </fieldset>

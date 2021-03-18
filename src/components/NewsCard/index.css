@@ -1,4 +1,4 @@
-.card {
+.news-card {
   width: 400px;
   height: 576px;
   border-radius: 16px;
@@ -10,14 +10,18 @@
   background-color: #FFFFFF;
 }
 
-.card__image {
+.news-card__image {
   position: absolute;
   top: 0;
   left: 0;
   height: 272px;
+  width: 400px;
+  background-color: rgba(0, 0, 0, 1);
+  object-fit: contain;
+  transition: object-fit .5s linear;
 }
 
-.card__date {
+.news-card__date {
   color: #B6BCBF;
   font-family: 'Source Sans Pro';
   font-size: 18px;
@@ -27,7 +31,7 @@
   margin: 268px 0 0;
 }
 
-.card__info {
+.news-card__info {
   height: 194px;
   margin: 12px 0 0;
   display: -webkit-box;
@@ -37,7 +41,7 @@
   overflow: hidden;
 }
 
-.card__title {
+.news-card__title {
   color: #1A1B22;
   font-family: 'Roboto Slab';
   font-size: 26px;
@@ -47,7 +51,7 @@
   margin: 0;
 }
 
-.card__text {
+.news-card__text {
   color: #1A1B22;
   font-family: 'Roboto';
   font-size: 16px;
@@ -57,7 +61,7 @@
   margin: 16px 0 0;
 }
 
-.card__source {
+.news-card__source {
   color: #B6BCBF;
   font-family: 'Roboto Slab';
   font-size: 16px;
@@ -69,7 +73,7 @@
   margin: 10px 0 0;
 }
 
-.card__keyword {
+.news-card__keyword {
   color: #000000;
   font-family: 'Roboto';
   font-size: 14px;
@@ -91,11 +95,11 @@
   overflow: hidden;
 }
 
-.card__keyword_hidden {
+.news-card__keyword_hidden {
   visibility: hidden;
 }
 
-.card__button {
+.news-card__button {
   position: absolute;
   top: 24px;
   right: 24px;
@@ -112,11 +116,11 @@
   transition: color .5s linear;
 }
 
-.card__button:hover {
+.news-card__button:hover {
   color: #1A1B22;
 }
 
-.card__infoTooltip {
+.news-card__infoTooltip {
   color: #000000;
   font-family: 'Roboto';
   font-size: 12px;
@@ -139,93 +143,113 @@
   transition: visibility .5s, opacity 0.5s linear;
 }
 
-.card__button:hover ~ .card__infoTooltip {
+.news-card__button:hover ~ .news-card__infoTooltip {
   visibility: visible;
   opacity: 1;
 }
 
-.card__icon {
+.news-card__icon {
   vertical-align: top;
 }
 
-.card__hide-button {
-  display: none;
-  visibility: hidden;
+.news-card__icon_saved {
+  color: #2F71E5;
+  fill: #2F71E5;
+}
+
+.news-card__link {
+  position: absolute;
+  top: 272px;
+  left: 0;
+  width: 100%;
+  height: 304px;
 }
 
 @media screen and (max-width: 1024px) {
-  .card {
+  .news-card {
     width: 224px;
     height: 420px;
     padding: 16px;
   }
 
-  .card__image {
+  .news-card__image {
     height: 150px;
+    width: 224px;
   }
 
-  .card__date {
+  .news-card__date {
     margin: 150px 0 0;
   }
 
-  .card__info {
+  .news-card__info {
     height: 170px;
   }
 
-  .card__title {
+  .news-card__title {
     font-size: 22px;
     line-height: 24px;
   }
 
-  .card__text {
+  .news-card__text {
     margin: 10px 0 0
   }
 
-  .card__keyword {
+  .news-card__keyword {
     top: 8px;
     left: 8px;
   }
 
-  .card__button {
+  .news-card__button {
     top: 8px;
     right: 8px;
   }
 
-  .card__infoTooltip {
+  .news-card__infoTooltip {
     top: 56px;
     right: 8px;
+  }
+
+  .news-card__link {
+    top: 150px;
+    height: 270px;
   }
 }
 
 @media screen and (max-width: 535px) {
-  .card {
+  .news-card {
     width: 288px;
     height: 446px;
   }
 
-  .card__image {
+  .news-card__image {
     height: 196px;
+    width: 288px;
   }
 
-  .card__date {
+  .news-card__date {
     margin: 196px 0 0;
   }
 
-  .card__info {
+  .news-card__info {
     height: 154px;
     margin: 10px 0 0;
     -webkit-line-clamp: 6;
   }
 
-  .card__title {
+  .news-card__title {
     line-height: 28px;
   }
 
-  .card__text {
+  .news-card__text {
     margin: 10px 0 0;
   }
 
-  .card__source {
+  .news-card__source {
     margin: 8px 0 0;
+  }
+
+  .news-card__link {
+    top: 196px;
+    height: 250px;
   }
 }

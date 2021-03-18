@@ -7,16 +7,41 @@ import SearchResults from '../SearchResults';
 
 
 function Main({
-  onLoginPopup,
+  headerButtonClick,
+  onSearch,
+  articles,
+  onShowMore,
+  isShowPreloader,
+  isShowButton,
+  isShowSearchResults,
+  isShowNoResults,
+  onCardButtonClick,
+  savedArticles,
+  setFormError,
+  formError,
 }) {
   return (
     <>
       <Header
-        onLoginPopup={onLoginPopup}
+        headerButtonClick={headerButtonClick}
+        onSearch={onSearch}
+        setFormError={setFormError}
+        formError={formError}
       />
-      <Preloader />
-      <SearchResults />
-      <NoResults />
+      <Preloader
+        isShowPreloader={isShowPreloader}
+      />
+      <SearchResults
+        articles={articles}
+        onShowMore={onShowMore}
+        isShowButton={isShowButton}
+        isShowSearchResults={isShowSearchResults}
+        onCardButtonClick={onCardButtonClick}
+        savedArticles={savedArticles}
+      />
+      <NoResults
+        isShowNoResults={isShowNoResults}
+      />
       <About />
     </>
   );

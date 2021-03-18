@@ -6,6 +6,7 @@ import './index.css';
 function Button({
   buttonText,
   onClick,
+  isDisabled,
 }) {
   const place = useContext(PlaceContext);
   const page = useContext(PageContext);
@@ -16,18 +17,25 @@ function Button({
 
   let buttonType;
   let type;
+  let buttonDisabled;
 
   if (place === "login") {
-    buttonType = "button__submit button__submit_place_login-register";
+    buttonType = "button__submit";
     type = "submit"
+    buttonDisabled = isDisabled
+      ? "button__submit_disabled"
+      : "";
   } else if (place === "register") {
-    buttonType = "button__submit button__submit_place_login-register";
+    buttonType = "button__submit";
     type = "submit"
+    buttonDisabled = isDisabled
+      ? "button__submit_disabled"
+      : "";
   } else if (place === "header") {
     buttonType = "button__header";
     type = "button"
   } else if (place === "search") {
-    buttonType = "button__submit button__submit_place_search";
+    buttonType = "button__submit";
     type = "submit"
   } else if (place === "cards-list") {
     buttonType = "button__cards-list";
@@ -36,9 +44,10 @@ function Button({
 
   return (
     <button
-      className={`button ${buttonPageType} ${buttonType}`}
+      className={`button ${buttonPageType} ${buttonType} ${buttonDisabled}`}
       type={type}
       onClick={onClick}
+      disabled={isDisabled}
     >
       {buttonText}
     </button>

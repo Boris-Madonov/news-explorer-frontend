@@ -9,6 +9,8 @@ function FormInput({
   placeholder,
   value,
   onChange,
+  isValid,
+  error,
   minLength,
   maxLength,
   }) {
@@ -17,24 +19,20 @@ function FormInput({
   let inputFieldType;
   let inputNameType;
   let inputNameText;
-  let errorType;
 
   if (place === "login") {
     inputFieldType = "input__field_place_login-register";
     inputNameType = "input__name_place_login-register";
     inputNameText = inputName;
-    errorType = "";
   } else if (place === "register") {
     inputFieldType ="input__field_place_login-register";
     inputNameType = "input__name_place_login-register";
     inputNameText = inputName;
-    errorType = "";
   } else if (place === "search") {
     inputFieldType = "input__field_place_search";
     inputNameType = "input__name_place_search";
     inputNameText = "";
-    errorType = "input__field-error_hide";
-  }
+  };
 
   return(
     <label className={`input__name ${inputNameType}`}>
@@ -52,10 +50,10 @@ function FormInput({
         required
       />
       <span
-        className={`input__field-error ${errorType}`}
+        className={`input__field-error ${isValid && `input__field-error_hide`}`}
         id={`${place}-input-${name}-error`}
       >
-        Ошибка валидации
+        {error}
       </span>
     </label>
   );

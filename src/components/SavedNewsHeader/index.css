@@ -33,6 +33,17 @@
   font-size: 18px;
   line-height: 24px;
   margin: 30px 0 0;
+  display: none;
+  visibility: hidden;
+}
+
+.saved-news-header__keywords_show {
+  display: block;
+  visibility: visible;
+}
+
+.saved-news-header__keywords_span {
+  font-weight: 700;
 }
 
 @media screen and (max-width: 970px) {

@@ -4,18 +4,25 @@ import SearchForm from '../SearchForm';
 import PageLink from '../PageLink';
 import { PageContext } from '../../contexts/PageContext';
 import { PlaceContext } from '../../contexts/PlaceContext';
+import { LoggedInContext } from '../../contexts/LoggedInContext';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import SavedNewsHeader from '../SavedNewsHeader';
 import './index.css';
 import { CloseIcon, LogOut, MenuIcon } from '../../images/icon';
 
 function Header({
-  onLoginPopup,
-  loggedIn,
+  headerButtonClick,
+  onSearch,
+  savedArticles,
+  setFormError,
+  formError,
 }) {
   const [dropDown, setDropDown] = useState("");
   const [headerType, setHeaderType] = useState("");
   const [menuListType, setMenuListType] = useState("");
   const page = useContext(PageContext);
+  const loggedIn = useContext(LoggedInContext);
+  const currentUser = useContext(CurrentUserContext);
   const linkMainActive = page === "main"
     ? true
     : false;
@@ -42,15 +49,15 @@ function Header({
     menuListTheme = "header__menu-list_theme_white";
   }
 
-  const buttonText = !loggedIn
+  const buttonText = loggedIn
     ? <>
-        Грета
+        {currentUser.name}
         <LogOut
           className="header__logOutIcon"
         />
       </>
     : "Авторизоваться";
-  const hideLink = !loggedIn ? "" : "header__hide-link";
+  const hideLink = loggedIn ? "" : "header__hide-link";
   const dropDownIcon = dropDown === ""
     ? <MenuIcon
         className="header__menu-dropdown-icon"
@@ -115,13 +122,23 @@ function Header({
             >
               <Button
                 buttonText={buttonText}
-                onClick={onLoginPopup}
+                onClick={headerButtonClick}
               />
             </div>
           </nav>
         </header>
       </PlaceContext.Provider>
-      {page === "main" ? <SearchForm /> : <SavedNewsHeader />}
+      {
+        page === "main"
+          ? <SearchForm
+            onSearch={onSearch}
+            setFormError={setFormError}
+            formError={formError}
+          />
+          : <SavedNewsHeader
+            savedArticles={savedArticles}
+          />
+      }
     </section>
   );
 }
