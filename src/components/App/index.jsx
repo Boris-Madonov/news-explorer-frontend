@@ -20,7 +20,8 @@ import * as mainApi from '../../utils/MainApi';
 import * as newsApi from '../../utils/NewsApi';
 
 function App() {
-  const reduceArr = (arr) => { // функция для удаления элементов из массива новостей
+  // функция для удаления элементов из массива новостей
+  const reduceArr = (arr) => {
     if (arr === null) {
       return [];
     }
