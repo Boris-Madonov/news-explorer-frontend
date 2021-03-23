@@ -1,8 +1,8 @@
 import React from 'react';
 import Button from '../Button';
 import NewsCardList from '../NewsCardList';
-import { PlaceContext } from '../../contexts/PlaceContext'
-import "./index.css"
+import { PlaceContext } from '../../contexts/PlaceContext';
+import './index.css';
 
 function SearchResults({
   articles,
@@ -12,10 +12,9 @@ function SearchResults({
   onCardButtonClick,
   savedArticles,
 }) {
-
   return (
     <PlaceContext.Provider value="cards-list">
-      <section className={`search-results ${isShowSearchResults && `search-results_show`}`}>
+      <section className={`search-results ${isShowSearchResults && 'search-results_show'}`}>
         <h2
           className="search-results__title"
         >
@@ -27,7 +26,7 @@ function SearchResults({
           savedArticles={savedArticles}
         />
         <div
-          className={`search-results__button ${isShowButton && `search-results__button_show`}`}
+          className={`search-results__button ${isShowButton && 'search-results__button_show'}`}
         >
           <Button
             buttonText="Показать еще"

@@ -1,13 +1,13 @@
 import React from 'react';
-import preloaderPath from '../../images/ellipse.png'
+import preloaderPath from '../../images/ellipse.png';
 
-import "./index.css"
+import './index.css';
 
 function Preloader({
   isShowPreloader,
 }) {
   return (
-    <section className={`preloader ${isShowPreloader && `preloader_opened`}`}>
+    <section className={`preloader ${isShowPreloader && 'preloader_opened'}`}>
       <div className="preloader__elements">
         <img
           className="preloader__circle"

@@ -1,6 +1,6 @@
-const BASE_URL = "https://nomoreparties.co/news/v2";
-const apiKey = "f1d32e395d6545608c5714ec37c3a91a";
-const pageSize = "100";
+const BASE_URL = 'https://nomoreparties.co/news/v2';
+const apiKey = 'f1d32e395d6545608c5714ec37c3a91a';
+const pageSize = '100';
 
 const date1 = new Date(Date.now()); // текущая дата
 const date2 = new Date(Date.now() - 604800000); // текущая дата - 7 дней
@@ -15,9 +15,7 @@ const response = (res) => { // функция обработки ответа
   return Promise.reject(res);
 };
 
-export const getArticles = (searchText) => {
-  return fetch(`${BASE_URL}/everything?language=ru&q=${searchText}&from=${currentDateFrom}&to=${currentDateTo}&pageSize=${pageSize}&apiKey=${apiKey}`, {
-    method: 'GET',
-  })
-  .then(response)
-};
+export const getArticles = (searchText) => fetch(`${BASE_URL}/everything?language=ru&q=${searchText}&from=${currentDateFrom}&to=${currentDateTo}&pageSize=${pageSize}&apiKey=${apiKey}`, {
+  method: 'GET',
+})
+  .then(response);

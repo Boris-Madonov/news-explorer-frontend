@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-const useForm = validate => {
+const useForm = (validate) => {
   const [values, setValues] = useState({});
   const [validationError, setValidationError] = useState({});
   const [isValid, setIsValid] = useState({});
 
-  let isFormValid = Object.values(isValid).every(Boolean);
+  const isFormValid = Object.values(isValid).every(Boolean);
 
-  const handleChangeInput = e => {
+  const handleChangeInput = (e) => {
     const { name, value } = e.target;
     setValues({
       ...values,
@@ -23,7 +23,7 @@ const useForm = validate => {
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     validate();
   };

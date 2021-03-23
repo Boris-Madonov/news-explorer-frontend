@@ -7,8 +7,8 @@ import { PlaceContext } from '../../contexts/PlaceContext';
 import { LoggedInContext } from '../../contexts/LoggedInContext';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import SavedNewsHeader from '../SavedNewsHeader';
-import './index.css';
 import { CloseIcon, LogOut, MenuIcon } from '../../images/icon';
+import './index.css';
 
 function Header({
   headerButtonClick,
@@ -17,13 +17,13 @@ function Header({
   setFormError,
   formError,
 }) {
-  const [dropDown, setDropDown] = useState("");
-  const [headerType, setHeaderType] = useState("");
-  const [menuListType, setMenuListType] = useState("");
+  const [dropDown, setDropDown] = useState('');
+  const [headerType, setHeaderType] = useState('');
+  const [menuListType, setMenuListType] = useState('');
   const page = useContext(PageContext);
   const loggedIn = useContext(LoggedInContext);
   const currentUser = useContext(CurrentUserContext);
-  const linkMainActive = page === "main"
+  const linkMainActive = page === 'main'
     ? true
     : false;
 
@@ -37,44 +37,44 @@ function Header({
   let menuListTheme;
 
 
-  if (page === "main") {
-    headerElementsType = "header-elements_page_main";
-    dropDownTheme = "header__menu-dropdown_theme_white";
-    headerTypeDropDown = "header_theme_dark";
-    menuListTheme = "header__menu-list_theme_dark";
-  } else if (page === "savedNews") {
-    headerElementsType = "header-elements_page_saved-news";
-    dropDownTheme = "header__menu-dropdown_theme_dark";
-    headerTypeDropDown = "header_theme_white";
-    menuListTheme = "header__menu-list_theme_white";
+  if (page === 'main') {
+    headerElementsType = 'header-elements_page_main';
+    dropDownTheme = 'header__menu-dropdown_theme_white';
+    headerTypeDropDown = 'header_theme_dark';
+    menuListTheme = 'header__menu-list_theme_dark';
+  } else if (page === 'savedNews') {
+    headerElementsType = 'header-elements_page_saved-news';
+    dropDownTheme = 'header__menu-dropdown_theme_dark';
+    headerTypeDropDown = 'header_theme_white';
+    menuListTheme = 'header__menu-list_theme_white';
   }
 
   const buttonText = loggedIn
     ? <>
         {currentUser.name}
         <LogOut
-          className="header__logOutIcon"
+          className='header__logOutIcon'
         />
       </>
-    : "Авторизоваться";
-  const hideLink = loggedIn ? "" : "header__hide-link";
-  const dropDownIcon = dropDown === ""
+    : 'Авторизоваться';
+  const hideLink = loggedIn ? '' : 'header__hide-link';
+  const dropDownIcon = dropDown === ''
     ? <MenuIcon
-        className="header__menu-dropdown-icon"
+        className='header__menu-dropdown-icon'
       />
     : <CloseIcon
-        className="header__menu-dropdown-icon"
+        className='header__menu-dropdown-icon'
       />
 
   const handlerDropDownButton = () => {
-    if (dropDown === "") {
-      setDropDown("header__menu_show");
+    if (dropDown === '') {
+      setDropDown('header__menu_show');
       setHeaderType(headerTypeDropDown);
       setMenuListType(menuListTheme);
     } else {
-      setDropDown("");
-      setHeaderType("");
-      setMenuListType("");
+      setDropDown('');
+      setHeaderType('');
+      setMenuListType('');
     };
   };
 
@@ -85,9 +85,9 @@ function Header({
           className={`header ${headerType}`}
         >
           <PageLink
-            linkTo="/"
-            linkText="NewsExplorer"
-            linkPlace="headerLogo"
+            linkTo='/'
+            linkText='NewsExplorer'
+            linkPlace='headerLogo'
             activeClassName={false}
           />
           <button
@@ -101,9 +101,9 @@ function Header({
               className={`header__menu-list ${menuListType}`}
             >
               <PageLink
-                linkTo="/"
-                linkText="Главная"
-                linkPlace="headerMenu"
+                linkTo='/'
+                linkText='Главная'
+                linkPlace='headerMenu'
                 activeClassName={linkMainActive}
               />
             </div>
@@ -111,9 +111,9 @@ function Header({
               className={`header__menu-list ${hideLink} ${menuListType}`}
             >
               <PageLink
-                linkTo="/saved-news"
-                linkText="Сохранённые статьи"
-                linkPlace="headerMenu"
+                linkTo='/saved-news'
+                linkText='Сохранённые статьи'
+                linkPlace='headerMenu'
                 activeClassName={linkSavedNewsActive}
               />
             </div>
@@ -129,7 +129,7 @@ function Header({
         </header>
       </PlaceContext.Provider>
       {
-        page === "main"
+        page === 'main'
           ? <SearchForm
             onSearch={onSearch}
             setFormError={setFormError}

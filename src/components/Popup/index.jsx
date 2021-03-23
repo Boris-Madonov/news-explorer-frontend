@@ -9,34 +9,34 @@ function Popup({
   children,
 }) {
   useEffect(() => {
-    const handlerEsc = e => {
-      if(e.keyCode === 27) {
+    const handlerEsc = (e) => {
+      if (e.keyCode === 27) {
         onClose();
       }
     };
 
-    document.addEventListener("keydown", handlerEsc);
+    document.addEventListener('keydown', handlerEsc);
 
     return () => {
-      document.removeEventListener("keydown", handlerEsc);
+      document.removeEventListener('keydown', handlerEsc);
     };
   }, [onClose]);
 
   useEffect(() => {
-    const handlerOverlayClose = e => {
+    const handlerOverlayClose = (e) => {
       if (e.target.classList.contains('popup')) {
         onClose();
       }
     };
 
-    document.addEventListener("click", handlerOverlayClose);
+    document.addEventListener('click', handlerOverlayClose);
 
     return () => {
-      document.removeEventListener("click", handlerOverlayClose);
+      document.removeEventListener('click', handlerOverlayClose);
     };
   }, [onClose]);
 
-  return(
+  return (
     <section className={`popup popup__${name} ${isOpen && 'popup_opened'}`}>
       <div className="popup__container">
         <button
@@ -54,4 +54,4 @@ function Popup({
   );
 }
 
-export default Popup
+export default Popup;

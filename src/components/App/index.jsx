@@ -10,10 +10,10 @@ import InfoTooltip from '../InfoTooltip';
 import Main from '../Main';
 import Footer from '../Footer';
 import SavedNews from '../SavedNews';
-import ProtectedRoute from '../ProtectedRoute'
+import ProtectedRoute from '../ProtectedRoute';
 import { setToken, getToken, removeToken } from '../../utils/token';
 import { setArticles, getArticles } from '../../utils/articles';
-import { setKeyword, getKeyword} from '../../utils/keyword';
+import { setKeyword, getKeyword } from '../../utils/keyword';
 import { conflictError, badRequestError } from '../../utils/config';
 import * as auth from '../../utils/auth';
 import * as mainApi from '../../utils/MainApi';
@@ -23,10 +23,9 @@ function App() {
   const reduceArr = (arr) => { // функция для удаления элементов из массива новостей
     if (arr === null) {
       return [];
-    } else {
-      arr.splice(3, arr.length-3);
-      return arr;
     }
+    arr.splice(3, arr.length - 3);
+    return arr;
   };
 
   const [registerPopupOpen, setRegisterPopupOpen] = useState(false);
@@ -40,12 +39,11 @@ function App() {
   const [isShowButton, setShowButton] = useState(true);
   const [isShowSearchResults, setShowSearchResults] = useState(() => {
     if (JSON.parse(getArticles()) === null) {
-      return false
-    } else if (JSON.parse(getArticles()).length === 0) {
       return false;
-    } else {
-      return true;
+    } if (JSON.parse(getArticles()).length === 0) {
+      return false;
     }
+    return true;
   });
   const [isShowNoResults, setShowNoResults] = useState(false);
   const [formError, setFormError] = useState('');
@@ -105,21 +103,21 @@ function App() {
   const tokenCheck = () => {
     const jwt = getToken();
 
-    if(!jwt) {
+    if (!jwt) {
       return;
     }
 
     auth.checkToken(jwt)
-    .then(() => {
-      setLoggedIn(true);
-    })
-    .catch((err) => {
-      setLoggedIn(false);
-      if(err.status === 401) {
-        console.log(`Ошибка с кодом ${err.status} - Переданный токен некорректен`);
-      }
-      console.log(err);
-    });
+      .then(() => {
+        setLoggedIn(true);
+      })
+      .catch((err) => {
+        setLoggedIn(false);
+        if (err.status === 401) {
+          console.log(`Ошибка с кодом ${err.status} - Переданный токен некорректен`);
+        }
+        console.log(err);
+      });
   };
 
   useEffect(() => {
@@ -141,15 +139,15 @@ function App() {
   // авторизация пользователя
   const handlerLogin = (userEmail, userPassword) => {
     auth.authorize(userEmail, userPassword)
-    .then((data) => {
-      setToken(data.token)
-      setLoggedIn(true);
-      closeAllPopups();
-    })
-    .catch((err) => {
-      console.log(err);
-      setFormError(badRequestError);
-    });
+      .then((data) => {
+        setToken(data.token);
+        setLoggedIn(true);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
+        setFormError(badRequestError);
+      });
   };
 
   // выход
@@ -165,27 +163,27 @@ function App() {
     setShowNoResults(false);
     setKeyword(searchText);
     newsApi.getArticles(searchText)
-    .then((res) => {
-      setShowPreloader(false);
-      if (res.articles.length === 0) {
-        setShowNoResults(true)
-      } else {
-        setArticles(JSON.stringify(res.articles));
-        setFoundArticles(reduceArr(res.articles));
-        setShowSearchResults(true);
-        if (res.articles.length < 3) {
-          setShowButton(false);
+      .then((res) => {
+        setShowPreloader(false);
+        if (res.articles.length === 0) {
+          setShowNoResults(true);
         } else {
-          setShowButton(true);
+          setArticles(JSON.stringify(res.articles));
+          setFoundArticles(reduceArr(res.articles));
+          setShowSearchResults(true);
+          if (res.articles.length < 3) {
+            setShowButton(false);
+          } else {
+            setShowButton(true);
+          }
         }
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-  //удаление сохраненной новости
+  // удаление сохраненной новости
   const deleteArticle = (article) => {
     mainApi.deleteArticle(article._id)
       .then(() => {
@@ -194,7 +192,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
   };
 
   // сохранение новости
@@ -202,18 +200,18 @@ function App() {
     if (!loggedIn) {
       setLoginPopupOpen(true);
     } else {
-      const checkArticle = savedArticles.find(a => a.title === article.title);
+      const checkArticle = savedArticles.find((a) => a.title === article.title);
 
       if (checkArticle !== undefined) {
         deleteArticle(checkArticle);
       } else {
         mainApi.saveArticle(article, getKeyword())
           .then((res) => {
-            setSavedArticles([res, ...savedArticles])
+            setSavedArticles([res, ...savedArticles]);
           })
           .catch((err) => {
             console.log(err);
-          })
+          });
       }
     }
   };
@@ -248,12 +246,12 @@ function App() {
 
             <ProtectedRoute exact path="/saved-news">
               <PageContext.Provider value="savedNews">
-                  <SavedNews
-                    headerButtonClick={handlerLogOut}
-                    articles={savedArticles}
-                    onCardButtonClick={deleteArticle}
-                  />
-                </PageContext.Provider>
+                <SavedNews
+                  headerButtonClick={handlerLogOut}
+                  articles={savedArticles}
+                  onCardButtonClick={deleteArticle}
+                />
+              </PageContext.Provider>
             </ProtectedRoute>
           </Switch>
         </LoggedInContext.Provider>
