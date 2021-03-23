@@ -1,59 +1,57 @@
 import { getToken } from './token';
 import { BASE_URL } from './auth';
 
-const response = (res) => { // функция обработки ответа
+// функция обработки ответа
+const response = (res) => {
   if (res.ok) {
     return res.json();
   }
   return Promise.reject(res);
 };
 
-const getHeaders = () => { // функция обработки заголовков
+// функция обработки заголовков
+const getHeaders = () => {
   const token = getToken('jwt');
   return {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`,
-  }
+    Authorization: `Bearer ${token}`,
+  };
 };
 
-export const getUserInfo = () => {
-  return fetch(`${BASE_URL}/users/me`, {
-    headers: getHeaders()
-  })
-  .then(response)
-};
+// получение информации о пользователе
+export const getUserInfo = () => fetch(`${BASE_URL}/users/me`, {
+  headers: getHeaders(),
+})
+  .then(response);
 
-export const getSavedArticles = () => {
-  return fetch(`${BASE_URL}/articles`, {
-    method: 'GET',
-    headers: getHeaders()
-  })
-  .then(response)
-};
+// получение списка сохраненных статей
+export const getSavedArticles = () => fetch(`${BASE_URL}/articles`, {
+  method: 'GET',
+  headers: getHeaders(),
+})
+  .then(response);
 
-export const saveArticle = (article, keyword) => {
-  return fetch(`${BASE_URL}/articles`, {
-      method: 'POST',
-      headers: getHeaders(),
-      body: JSON.stringify({
-        keyword: keyword,
-        title: article.title,
-        description: article.description,
-        publishedAt: article.publishedAt,
-        source: {
-          name: article.source.name,
-        },
-        url: article.url,
-        urlToImage: article.urlToImage,
-      }),
-  })
-  .then(response)
-};
+// сохранить статью
+export const saveArticle = (article, keyword) => fetch(`${BASE_URL}/articles`, {
+  method: 'POST',
+  headers: getHeaders(),
+  body: JSON.stringify({
+    keyword,
+    title: article.title,
+    description: article.description,
+    publishedAt: article.publishedAt,
+    source: {
+      name: article.source.name,
+    },
+    url: article.url,
+    urlToImage: article.urlToImage,
+  }),
+})
+  .then(response);
 
-export const deleteArticle = (id) => {
-  return fetch(`${BASE_URL}/articles/${id}`, {
-      method: 'DELETE',
-      headers: getHeaders()
-  })
-  .then(response)
-};
+// удалить статью
+export const deleteArticle = (id) => fetch(`${BASE_URL}/articles/${id}`, {
+  method: 'DELETE',
+  headers: getHeaders(),
+})
+  .then(response);

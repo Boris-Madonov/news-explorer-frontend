@@ -1,12 +1,12 @@
 import React from 'react';
 import { NotFound } from '../../images/icon';
-import "./index.css"
+import './index.css';
 
 function NoResults({
   isShowNoResults,
 }) {
   return (
-    <section className={`not-found ${isShowNoResults && `not-found_show`}`}>
+    <section className={`not-found ${isShowNoResults && 'not-found_show'}`}>
       <NotFound />
       <p className="not-found__title">
         Ничего не найдено

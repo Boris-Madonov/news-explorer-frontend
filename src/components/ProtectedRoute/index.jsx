@@ -5,13 +5,13 @@ import { LoggedInContext } from '../../contexts/LoggedInContext';
 const ProtectedRoute = ({ ...routeProps }) => {
   const loggedIn = useContext(LoggedInContext);
 
-  return(
+  return (
     <Route>
       {
-        () => loggedIn ? <Route {...routeProps} /> : <Redirect to="/" />
+        () => (loggedIn ? <Route {...routeProps} /> : <Redirect to="/" />)
       }
     </Route>
-  )
+  );
 };
 
-export default ProtectedRoute
+export default ProtectedRoute;

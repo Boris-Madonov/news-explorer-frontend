@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
-import Form from '../Form';
-import FormInput from '../FormInput';
 import Popup from '../Popup';
+import FormInput from '../FormInput';
+import Form from '../Form';
 import PopupLink from '../PopupLink';
 import { PlaceContext } from '../../contexts/PlaceContext';
 import useForm from '../../hooks/useForm';
 
-function LoginPopup({
+function RegisterPopup({
   isOpen,
   onClose,
-  onRegisterPopup,
-  onLogin,
+  onLoginPopup,
+  onRegister,
   setFormError,
   formError,
 }) {
@@ -23,40 +23,43 @@ function LoginPopup({
     setValues,
     setIsValid,
     isValid,
-    isFormValid
+    isFormValid,
   } = useForm(submitForm);
 
   useEffect(() => {
     setValidationError({
-      email: "",
-      password: "",
+      email: '',
+      password: '',
+      name: '',
     });
     setValues({
-      email: "",
-      password: "",
+      email: '',
+      password: '',
+      name: '',
     });
     setIsValid({
       email: false,
       password: false,
+      name: false,
     });
     setFormError('');
   }, [setValidationError, setValues, setIsValid, setFormError, isOpen]);
 
   function submitForm(e) {
-    const { email, password } = values;
-    onLogin(email, password);
-  };
+    const { email, password, name } = values;
+    onRegister(email, password, name);
+  }
 
   return (
-    <PlaceContext.Provider value="login">
+    <PlaceContext.Provider value="register">
       <Popup
-      name="login"
-      isOpen={isOpen}
-      onClose={onClose}
+        name="register"
+        isOpen={isOpen}
+        onClose={onClose}
       >
         <Form
-          formTitle="Вход"
-          buttonText="Войти"
+          formTitle="Регистрация"
+          buttonText="Зарегистрироваться"
           onSubmit={handleSubmit}
           isDisabled={!isFormValid}
           formError={formError}
@@ -69,9 +72,9 @@ function LoginPopup({
             value={String(values.email)}
             onChange={handleChangeInput}
             isValid={isValid.email}
-            error={`${values.email === ""
+            error={`${values.email === ''
               ? validationError.email
-              : `Неправильный формат email`
+              : 'Неправильный формат email'
             }`}
             minLength="1"
             maxLength="40"
@@ -88,13 +91,28 @@ function LoginPopup({
             minLength="1"
             maxLength="40"
           />
+          <FormInput
+            inputName="name"
+            type="text"
+            name="name"
+            placeholder="Введите своё имя"
+            value={String(values.name)}
+            onChange={handleChangeInput}
+            isValid={isValid.name}
+            error={`${values.name === ''
+              ? validationError.name
+              : 'Имя не должно быть короче 2-х символов'
+            }`}
+            minLength="2"
+            maxLength="30"
+          />
         </Form>
         <PopupLink
-          onClick={onRegisterPopup}
+          onClick={onLoginPopup}
         />
       </Popup>
     </PlaceContext.Provider>
   );
 }
 
-export default LoginPopup;
+export default RegisterPopup;

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import NewsCard from "../NewsCard";
-import { PageContext } from '../../contexts/PageContext'
-import "./index.css"
+import NewsCard from '../NewsCard';
+import { PageContext } from '../../contexts/PageContext';
+import './index.css';
 
 function NewsCardList({
   articles,
@@ -13,14 +13,14 @@ function NewsCardList({
   let sectionShow;
   let newsCardListType;
 
-  if (page === "main") {
-    sectionShow = "news-cards_show"
-    newsCardListType = "news-cards__list_page_main";
-  } else if (page === "savedNews") {
+  if (page === 'main') {
+    sectionShow = 'news-cards_show';
+    newsCardListType = 'news-cards__list_page_main';
+  } else if (page === 'savedNews') {
     sectionShow = articles.length === 0
-      ? ""
-      : "news-cards_show";
-    newsCardListType = "news-cards__list_page_saved-news";
+      ? ''
+      : 'news-cards_show';
+    newsCardListType = 'news-cards__list_page_saved-news';
   }
 
   return (

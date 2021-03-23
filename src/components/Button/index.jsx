@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import { PlaceContext } from '../../contexts/PlaceContext';
 import { PageContext } from '../../contexts/PageContext';
 import './index.css';
@@ -17,36 +16,34 @@ function Button({
     : '';
 
   let buttonType;
-  let type;
   let buttonDisabled;
 
   if (place === 'login') {
     buttonType = 'button__submit';
-    type = 'submit';
     buttonDisabled = isDisabled
       ? 'button__submit_disabled'
       : '';
   } else if (place === 'register') {
     buttonType = 'button__submit';
-    type = 'submit';
     buttonDisabled = isDisabled
       ? 'button__submit_disabled'
       : '';
   } else if (place === 'header') {
     buttonType = 'button__header';
-    type = 'button';
   } else if (place === 'search') {
     buttonType = 'button__submit';
-    type = 'submit';
   } else if (place === 'cards-list') {
     buttonType = 'button__cards-list';
-    type = 'button';
   }
 
   return (
     <button
       className={`button ${buttonPageType} ${buttonType} ${buttonDisabled}`}
-      type={type}
+      type={
+        place === 'login' || place === 'register' || place === 'search'
+          ? 'submit'
+          : 'button'
+      }
       onClick={onClick}
       disabled={isDisabled}
     >
@@ -54,11 +51,5 @@ function Button({
     </button>
   );
 }
-
-Button.propTypes = {
-  buttonText: PropTypes.element.isRequired,
-  onClick: PropTypes.func.isRequired,
-  isDisabled: PropTypes.bool.isRequired,
-};
 
 export default Button;

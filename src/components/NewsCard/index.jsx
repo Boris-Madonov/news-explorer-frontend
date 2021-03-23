@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { PageContext } from '../../contexts/PageContext';
 import { LoggedInContext } from '../../contexts/LoggedInContext';
-import { Bookmark, Trash } from "../../images/icon";
+import { Bookmark, Trash } from '../../images/icon';
 import './index.css';
 
 function NewsCard({
@@ -17,58 +17,56 @@ function NewsCard({
   let newsCardKeywordType;
   let saveIconType;
 
-  if (page === "main" && !loggedIn) {
-    infoTooltipText = "Войдите, чтобы сохранять статьи";
-    newsCardKeywordType = "news-card__keyword_hidden";
-    saveIconType = "";
-  } else if (page === "main" && loggedIn) {
-    newsCardKeywordType = "news-card__keyword_hidden";
+  if (page === 'main' && !loggedIn) {
+    infoTooltipText = 'Войдите, чтобы сохранять статьи';
+    newsCardKeywordType = 'news-card__keyword_hidden';
+    saveIconType = '';
+  } else if (page === 'main' && loggedIn) {
+    newsCardKeywordType = 'news-card__keyword_hidden';
 
-    const isArticleSaved = savedArticles.some(a => a.title === article.title);
+    const isArticleSaved = savedArticles.some((a) => a.title === article.title);
     saveIconType = isArticleSaved
-      ? "news-card__icon_saved"
-      : "";
+      ? 'news-card__icon_saved'
+      : '';
     infoTooltipText = isArticleSaved
-      ? "Убрать из сохранённых"
-      : "Сохранить статью";
-
-  } else if (page === "savedNews") {
-    infoTooltipText = "Убрать из сохранённых";
-    newsCardKeywordType = "";
-    saveIconType = "";
+      ? 'Убрать из сохранённых'
+      : 'Сохранить статью';
+  } else if (page === 'savedNews') {
+    infoTooltipText = 'Убрать из сохранённых';
+    newsCardKeywordType = '';
+    saveIconType = '';
   }
 
-
-  const dateObject = new Date (article.publishedAt);
+  const dateObject = new Date(article.publishedAt);
   let month;
   const getMonth = () => {
     const a = dateObject.getMonth() + 1;
     if (a === 1) {
-      return month = "января";
+      month = 'января';
     } else if (a === 2) {
-      return month = "февраля";
+      month = 'февраля';
     } else if (a === 3) {
-      return month = "марта";
+      month = 'марта';
     } else if (a === 4) {
-      return month = "апреля";
+      month = 'апреля';
     } else if (a === 5) {
-      return month = "мая";
+      month = 'мая';
     } else if (a === 6) {
-      return month = "июня";
-    }  else if (a === 7) {
-      return month = "июля";
+      month = 'июня';
+    } else if (a === 7) {
+      month = 'июля';
     } else if (a === 8) {
-      return month = "августа";
+      month = 'августа';
     } else if (a === 9) {
-      return month = "сентября";
+      month = 'сентября';
     } else if (a === 10) {
-      return month = "октября";
+      month = 'октября';
     } else if (a === 11) {
-      return month = "ноября";
+      month = 'ноября';
     } else if (a === 12) {
-      return month = "декабря";
+      month = 'декабря';
     }
-  }
+  };
   getMonth();
 
   const date = `${dateObject.getDate()} ${month}, ${dateObject.getFullYear()}`;
@@ -79,7 +77,8 @@ function NewsCard({
 
   return (
     <li className="news-card">
-      <img className="news-card__image"
+      <img
+        className="news-card__image"
         src={article.urlToImage}
         alt={article.title}
       />
@@ -106,7 +105,7 @@ function NewsCard({
         onClick={handlerButtonClick}
       >
         {
-          page === "main"
+          page === 'main'
             ? <Bookmark className={`news-card__icon ${saveIconType}`} />
             : <Trash className="news-card__icon" />
         }
@@ -120,6 +119,7 @@ function NewsCard({
         target="_blank"
         rel="noreferrer"
       >
+        Ссылка на статью
       </a>
     </li>
   );

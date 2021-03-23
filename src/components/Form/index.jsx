@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import { PlaceContext } from '../../contexts/PlaceContext';
 import Button from '../Button';
 import './index.css';
@@ -67,14 +66,5 @@ function Form({
     </form>
   );
 }
-
-Form.propTypes = {
-  formTitle: PropTypes.string.isRequired,
-  buttonText: PropTypes.element.isRequired,
-  children: PropTypes.element.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  isDisabled: PropTypes.bool.isRequired,
-  formError: PropTypes.string.isRequired,
-};
 
 export default Form;

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Form from '../Form';
-import FormInput from "../FormInput";
+import FormInput from '../FormInput';
 import { PlaceContext } from '../../contexts/PlaceContext';
 import useForm from '../../hooks/useForm';
 import './index.css';
@@ -22,10 +22,10 @@ function SearchForm({
 
   useEffect(() => {
     setValidationError({
-      searchNews: "",
+      searchNews: '',
     });
     setValues({
-      searchNews: "",
+      searchNews: '',
     });
     setIsValid({
       searchNews: false,
@@ -36,14 +36,14 @@ function SearchForm({
     const { searchNews } = values;
 
     if (!searchNews) {
-      setFormError("Введите ключевое слово")
+      setFormError('Введите ключевое слово');
       return;
     }
 
-    const keyword = searchNews.charAt(0).toUpperCase() + searchNews.slice(1)
+    const keyword = searchNews.charAt(0).toUpperCase() + searchNews.slice(1);
     onSearch(keyword);
-    setFormError("");
-  };
+    setFormError('');
+  }
 
   return (
     <PlaceContext.Provider value="search">
