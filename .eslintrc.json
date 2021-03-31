@@ -18,6 +18,30 @@
         "react"
     ],
     "rules": {
-      "no-underscore-dangle": ["error", { "allow": ["_id"] }]
-    }
+      "no-underscore-dangle": ["error", { "allow": ["_id"] }],
+      "no-use-before-define": ["error", { "functions": false }]
+    },
+    "overrides": [
+      {
+        "files": [
+          "CurrentUserContext.js",
+          "LoggedInContext.js",
+          "PageContext.js",
+          "PlaceContext.js"
+        ],
+        "rules": {
+          "import/prefer-default-export": "off"
+        }
+      },
+      {
+        "files": [
+          "index.jsx"
+        ],
+        "rules": {
+          "react/prop-types": "off",
+          "no-plusplus": "off",
+          "no-restricted-syntax": "off"
+        }
+      }
+    ]
 }

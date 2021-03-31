@@ -17,7 +17,7 @@ import { setKeyword, getKeyword } from '../../utils/keyword';
 import { conflictError, badRequestError } from '../../utils/config';
 import * as auth from '../../utils/auth';
 import * as mainApi from '../../utils/MainApi';
-import * as newsApi from '../../utils/NewsApi';
+import getNewsArticles from '../../utils/NewsApi';
 
 function App() {
   // функция для удаления элементов из массива новостей
@@ -163,7 +163,7 @@ function App() {
     setShowSearchResults(false);
     setShowNoResults(false);
     setKeyword(searchText);
-    newsApi.getArticles(searchText)
+    getNewsArticles(searchText)
       .then((res) => {
         setShowPreloader(false);
         if (res.articles.length === 0) {

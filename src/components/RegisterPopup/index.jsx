@@ -45,7 +45,7 @@ function RegisterPopup({
     setFormError('');
   }, [setValidationError, setValues, setIsValid, setFormError, isOpen]);
 
-  function submitForm(e) {
+  function submitForm() {
     const { email, password, name } = values;
     onRegister(email, password, name);
   }
