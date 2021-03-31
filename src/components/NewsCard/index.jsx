@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable jsx-a11y/anchor-has-content */
 import React, { useContext } from 'react';
 import { PageContext } from '../../contexts/PageContext';
 import { LoggedInContext } from '../../contexts/LoggedInContext';
@@ -118,9 +120,7 @@ function NewsCard({
         href={article.url}
         target="_blank"
         rel="noreferrer"
-      >
-        Ссылка на статью
-      </a>
+      />
     </li>
   );
 }

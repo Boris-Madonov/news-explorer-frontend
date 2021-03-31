@@ -23,19 +23,14 @@ function Header({
   const page = useContext(PageContext);
   const loggedIn = useContext(LoggedInContext);
   const currentUser = useContext(CurrentUserContext);
-  const linkMainActive = page === 'main'
-    ? true
-    : false;
+  const linkMainActive = page === 'main';
 
-  const linkSavedNewsActive = page === "savedNews"
-    ? true
-    : false;
+  const linkSavedNewsActive = page === 'savedNews';
 
   let headerElementsType;
   let dropDownTheme;
   let headerTypeDropDown;
   let menuListTheme;
-
 
   if (page === 'main') {
     headerElementsType = 'header-elements_page_main';
@@ -50,21 +45,27 @@ function Header({
   }
 
   const buttonText = loggedIn
-    ? <>
+    ? (
+      <>
         {currentUser.name}
         <LogOut
-          className='header__logOutIcon'
+          className="header__logOutIcon"
         />
       </>
+    )
     : 'Авторизоваться';
   const hideLink = loggedIn ? '' : 'header__hide-link';
   const dropDownIcon = dropDown === ''
-    ? <MenuIcon
-        className='header__menu-dropdown-icon'
+    ? (
+      <MenuIcon
+        className="header__menu-dropdown-icon"
       />
-    : <CloseIcon
-        className='header__menu-dropdown-icon'
+    )
+    : (
+      <CloseIcon
+        className="header__menu-dropdown-icon"
       />
+    );
 
   const handlerDropDownButton = () => {
     if (dropDown === '') {
@@ -75,7 +76,7 @@ function Header({
       setDropDown('');
       setHeaderType('');
       setMenuListType('');
-    };
+    }
   };
 
   return (
@@ -85,14 +86,15 @@ function Header({
           className={`header ${headerType}`}
         >
           <PageLink
-            linkTo='/'
-            linkText='NewsExplorer'
-            linkPlace='headerLogo'
+            linkTo="/"
+            linkText="NewsExplorer"
+            linkPlace="headerLogo"
             activeClassName={false}
           />
           <button
             className={`header__menu-dropdown ${dropDownTheme}`}
             onClick={handlerDropDownButton}
+            type="button"
           >
             {dropDownIcon}
           </button>
@@ -101,9 +103,9 @@ function Header({
               className={`header__menu-list ${menuListType}`}
             >
               <PageLink
-                linkTo='/'
-                linkText='Главная'
-                linkPlace='headerMenu'
+                linkTo="/"
+                linkText="Главная"
+                linkPlace="headerMenu"
                 activeClassName={linkMainActive}
               />
             </div>
@@ -111,9 +113,9 @@ function Header({
               className={`header__menu-list ${hideLink} ${menuListType}`}
             >
               <PageLink
-                linkTo='/saved-news'
-                linkText='Сохранённые статьи'
-                linkPlace='headerMenu'
+                linkTo="/saved-news"
+                linkText="Сохранённые статьи"
+                linkPlace="headerMenu"
                 activeClassName={linkSavedNewsActive}
               />
             </div>
@@ -130,14 +132,18 @@ function Header({
       </PlaceContext.Provider>
       {
         page === 'main'
-          ? <SearchForm
-            onSearch={onSearch}
-            setFormError={setFormError}
-            formError={formError}
-          />
-          : <SavedNewsHeader
-            savedArticles={savedArticles}
-          />
+          ? (
+            <SearchForm
+              onSearch={onSearch}
+              setFormError={setFormError}
+              formError={formError}
+            />
+          )
+          : (
+            <SavedNewsHeader
+              savedArticles={savedArticles}
+            />
+          )
       }
     </section>
   );

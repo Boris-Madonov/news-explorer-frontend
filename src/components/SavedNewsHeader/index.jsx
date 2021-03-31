@@ -52,6 +52,7 @@ function SavedNewsHeader({
   if (sortedKeywords.length < 3) {
     keyword3 = '';
   } else if (sortedKeywords.length < 4) {
+    // eslint-disable-next-line prefer-destructuring
     keyword3 = sortedKeywords[2];
   } else if (sortedKeywords.length >= 4) {
     keyword3 = `${sortedKeywords.length - 2}-${end3} другим`;

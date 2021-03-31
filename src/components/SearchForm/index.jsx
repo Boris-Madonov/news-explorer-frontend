@@ -32,7 +32,7 @@ function SearchForm({
     });
   }, [setValidationError, setValues, setIsValid, setFormError, onSearch]);
 
-  function submitForm(e) {
+  function submitForm() {
     const { searchNews } = values;
 
     if (!searchNews) {

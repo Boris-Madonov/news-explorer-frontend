@@ -15,7 +15,9 @@ const response = (res) => { // функция обработки ответа
   return Promise.reject(res);
 };
 
-export const getArticles = (searchText) => fetch(`${BASE_URL}/everything?language=ru&q=${searchText}&from=${currentDateFrom}&to=${currentDateTo}&pageSize=${pageSize}&apiKey=${apiKey}`, {
-  method: 'GET',
-})
-  .then(response);
+export default function getNewsArticles(searchText) {
+  fetch(`${BASE_URL}/everything?language=ru&q=${searchText}&from=${currentDateFrom}&to=${currentDateTo}&pageSize=${pageSize}&apiKey=${apiKey}`, {
+    method: 'GET',
+  })
+    .then(response);
+}
