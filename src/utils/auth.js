@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://178.154.208.34';
+export const BASE_URL = 'http://localhost:4000';
 
 // функция обработки ответа
 const response = (res) => {
