@@ -10,6 +10,7 @@ import InfoTooltip from '../InfoTooltip';
 import Main from '../Main';
 import Footer from '../Footer';
 import SavedNews from '../SavedNews';
+import ProtectedRoute from '../ProtectedRoute';
 import { setToken, getToken, removeToken } from '../../utils/token';
 import { setArticles, getArticles } from '../../utils/articles';
 import { setKeyword, getKeyword } from '../../utils/keyword';
@@ -221,7 +222,7 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <LoggedInContext.Provider value={loggedIn}>
           <Switch>
-            <Route exact path="/">
+            <Route exact path="news-explorer-frontend/">
               <PageContext.Provider value="main">
                 <Main
                   headerButtonClick={
@@ -244,7 +245,7 @@ function App() {
               </PageContext.Provider>
             </Route>
 
-            <Route exact path="/saved-news">
+            <ProtectedRoute exact path="news-explorer-frontend/saved-news">
               <PageContext.Provider value="savedNews">
                 <SavedNews
                   headerButtonClick={handlerLogOut}
@@ -252,7 +253,7 @@ function App() {
                   onCardButtonClick={deleteArticle}
                 />
               </PageContext.Provider>
-            </Route>
+            </ProtectedRoute>
           </Switch>
         </LoggedInContext.Provider>
 
