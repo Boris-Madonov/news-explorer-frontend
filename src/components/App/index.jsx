@@ -222,7 +222,7 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <LoggedInContext.Provider value={loggedIn}>
           <Switch>
-            <Route exact path="news-explorer-frontend/">
+            <Route exact path="/">
               <PageContext.Provider value="main">
                 <Main
                   headerButtonClick={
@@ -245,7 +245,7 @@ function App() {
               </PageContext.Provider>
             </Route>
 
-            <ProtectedRoute exact path="news-explorer-frontend/saved-news">
+            <ProtectedRoute exact path="/saved-news">
               <PageContext.Provider value="savedNews">
                 <SavedNews
                   headerButtonClick={handlerLogOut}
